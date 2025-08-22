@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Isabella & Alexander - Wedding</title>
+    <title>Րաֆֆի և Նանե</title>
     <link rel="stylesheet">
     <style>
         * {
@@ -14,10 +14,10 @@
         }
 
         :root {
-            --primary-gradient: linear-gradient(135deg, #70707033 0%, #9c9c9c86 50%, #53535356 100%);
-            --accent-gradient: linear-gradient(135deg, #ffffff28 0%, #ffffff1f 100%);
-            --glass-bg: rgba(75, 63, 23, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
+            --primary-gradient: linear-gradient(135deg, #66666633 0%, #72727286 50%, #57575756 100%);
+            --accent-gradient: linear-gradient(135deg, #5a5a5a28 0%, #4e4e4e1f 100%);
+            --glass-bg: rgba(53, 53, 53, 0.1);
+            --glass-border: rgba(95, 95, 95, 0.2);
             --text-primary: #ffffff;
             --text-secondary: #ffffff;
             --text-light: rgba(255, 255, 255, 0.9);
@@ -80,7 +80,7 @@
         .container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 5px;
             position: relative;
             z-index: 10;
         }
@@ -139,6 +139,20 @@
             font-style: normal;
         }
 
+        @font-face {
+            font-family: 'vicFont';
+            src: url('fonts/Victory.otf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'art';
+            src: url('fonts/weblysleekuili.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         .couple-names {
             font-family: 'MyArmFont', sans-serif;
         }
@@ -149,15 +163,16 @@
         }
 
         .date-badge {
+            font-family: 'art', sans-serif;
             display: inline-block;
             background: var(--accent-gradient);
             color: white;
-            padding: 10px 30px;
+            padding: 5px 30px;
             border-radius: 50px;
             font-size: 0.9rem;
             font-weight: 500;
             margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(94, 94, 94, 0.3);
+            box-shadow: 0 5px 30px rgba(94, 94, 94, 0.3);
             animation: heartbeat 2s ease-in-out infinite;
             position: relative;
             overflow: hidden;
@@ -195,6 +210,7 @@
                 opacity: 1;
             }
 
+
             100% {
                 width: 200px;
                 height: 200px;
@@ -203,18 +219,18 @@
         }
 
         .couple-names {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-size: clamp(4rem, 8vw, 7.5rem);
             font-weight: 700;
             color: white;
-            text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
-            margin: 30px 0;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            margin: px 0;
             position: relative;
         }
 
         .ampersand {
             color: #ffffff;
             font-size: 0.8em;
-            margin: 0 20px;
+            margin: 0 5px;
             display: inline-block;
             animation: dance 5s ease-in-out infinite;
         }
@@ -240,6 +256,7 @@
         }
 
         .wedding-subtitle {
+            font-family: 'art', sans-serif;
             font-size: 1.3rem;
             color: var(--text-light);
             font-weight: 300;
@@ -249,8 +266,8 @@
 
         .event-details {
             background: rgba(73, 73, 73, 0.15);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            border-radius: 5px;
             padding: 30px;
             margin: 30px auto;
             max-width: 400px;
@@ -258,6 +275,8 @@
         }
 
         .event-time {
+            font-family: 'art', sans-serif;
+            font-family: 'vicFont', sans-serif;
             font-size: 1.5rem;
             font-weight: 600;
             color: white;
@@ -265,6 +284,7 @@
         }
 
         .event-location {
+            font-family: 'art', sans-serif;
             color: var(--text-light);
             font-size: 1.1rem;
             line-height: 1.6;
@@ -285,7 +305,7 @@
         }
 
         .countdown-title {
-            font-family: 'Playfair Display', serif;
+            font-family: 'vicFont', sans-serif;
             font-size: 2.5rem;
             color: var(--text-primary);
             margin-bottom: 40px;
@@ -294,16 +314,16 @@
 
         .countdown-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(15px, 1fr));
+            gap: 5px;
             max-width: 600px;
             margin: 0 auto;
         }
 
         .countdown-item {
             background: var(--primary-gradient);
-            border-radius: 20px;
-            padding: 30px 20px;
+            border-radius: 5px;
+            padding: 30px 5px;
             color: white;
             position: relative;
             overflow: hidden;
@@ -345,6 +365,7 @@
         }
 
         .countdown-number {
+            font-family: 'art', sans-serif;
             font-size: 3rem;
             font-weight: 700;
             display: block;
@@ -352,6 +373,7 @@
         }
 
         .countdown-label {
+            font-family: 'art', sans-serif;
             font-size: 1rem;
             font-weight: 300;
             text-transform: uppercase;
@@ -371,7 +393,7 @@
         }
 
         .section-title {
-            font-family: 'Playfair Display', serif;
+            font-family: 'vicFont', sans-serif;
             font-size: 2.5rem;
             color: var(--text-primary);
             text-align: center;
@@ -383,23 +405,26 @@
             margin-bottom: 30px;
             padding: 25px;
             background: var(--accent-gradient);
-            border-radius: 20px;
+            border-radius: 5px;
             color: rgb(255, 255, 255);
         }
 
         .venue-name {
+            font-family: 'art', sans-serif;
             font-size: 1.5rem;
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
 
         .venue-address {
+            font-family: 'art', sans-serif;
             font-size: 1.1rem;
-            margin-bottom: 20px;
+            margin-bottom: 5px;
             opacity: 0.9;
         }
 
         .map-btn {
+            font-family: 'art', sans-serif;
             display: inline-block;
             background: var(--primary-gradient);
             color: white;
@@ -407,9 +432,9 @@
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 0.8rem;
             transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            box-shadow: 0 10px 30px rgba(72, 72, 73, 0.3);
+            box-shadow: 0 5px 30px rgba(72, 72, 73, 0.3);
         }
 
         .map-btn:hover {
@@ -429,7 +454,7 @@
         }
 
         .gallery-title {
-            font-family: 'Playfair Display', serif;
+            font-family: 'vicFont', sans-serif;
             font-size: 2.5rem;
             color: white;
             text-align: center;
@@ -440,13 +465,13 @@
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            gap: 5px;
             margin-bottom: 30px;
         }
 
         .gallery-item {
             position: relative;
-            border-radius: 20px;
+            border-radius: 5px;
             overflow: hidden;
             aspect-ratio: 1;
             cursor: pointer;
@@ -455,8 +480,8 @@
         }
 
         .gallery-item:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 5px 40px rgba(0, 0, 0, 0.3);
         }
 
         .gallery-item::before {
@@ -477,6 +502,7 @@
         }
 
         .gallery-placeholder {
+            font-family: 'art', sans-serif;
             width: 100%;
             height: 100%;
             display: flex;
@@ -487,20 +513,14 @@
             font-size: 1.2rem;
             font-weight: 500;
             text-align: center;
-            padding: 20px;
-        }
-
-        .gallery-icon {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            opacity: 0.8;
+            padding: 5px;
         }
 
 
         /* RSVP Section */
         .rsvp-section {
             background: var(--glass-bg);
-            backdrop-filter: blur(20px);
+            backdrop-filter: blur(5px);
             border: 1px solid var(--glass-border);
             border-radius: 30px;
             padding: 50px 40px;
@@ -509,15 +529,16 @@
         }
 
         .rsvp-title {
-            font-family: 'Playfair Display', serif;
+            font-family: 'vicFont', sans-serif;
             font-size: 2.5rem;
             color: white;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 5px;
             font-weight: 600;
         }
 
         .rsvp-subtitle {
+            font-family: 'art', sans-serif;
             text-align: center;
             color: var(--text-light);
             font-size: 1.1rem;
@@ -532,7 +553,7 @@
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: 5px;
             margin-bottom: 25px;
         }
 
@@ -541,6 +562,7 @@
         }
 
         .form-label {
+            font-family: 'art', sans-serif;
             display: block;
             color: white;
             font-weight: 500;
@@ -551,15 +573,16 @@
         .form-input,
         .form-select,
         .form-textarea {
+            font-family: 'art', sans-serif;
             width: 100%;
-            padding: 15px 20px;
+            padding: 15px 5px;
             background: rgba(49, 49, 49, 0.1);
             border: 2px solid rgba(31, 31, 31, 0.2);
             border-radius: 15px;
-            color: white;
+            color: rgb(0, 0, 0);
             font-size: 1rem;
             transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(5px);
         }
 
         .form-input::placeholder,
@@ -573,7 +596,7 @@
             outline: none;
             border-color: #ffecd2;
             background: rgba(31, 27, 27, 0.15);
-            box-shadow: 0 0 20px rgba(44, 41, 37, 0.3);
+            box-shadow: 0 0 5px rgba(44, 41, 37, 0.3);
         }
 
         .radio-group {
@@ -586,7 +609,7 @@
         .radio-item {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 5px;
             cursor: pointer;
             padding: 15px 25px;
             background: rgba(255, 255, 255, 0.1);
@@ -602,23 +625,25 @@
 
         .radio-item input[type="radio"] {
             accent-color: #464646;
-            width: 20px;
-            height: 20px;
+            width: 5px;
+            height: 5px;
         }
 
         .radio-item label {
+            font-family: 'art', sans-serif;
             color: white;
             font-weight: 500;
             cursor: pointer;
         }
 
         .submit-btn {
+            font-family: 'art', sans-serif;
             background: var(--accent-gradient);
             color: white;
             border: none;
             padding: 18px 50px;
             border-radius: 30px;
-            font-size: 1.2rem;
+            font-size: 0.8rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -629,16 +654,17 @@
 
         .submit-btn:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(58, 58, 58, 0.6);
+            box-shadow: 0 5px 40px rgba(58, 58, 58, 0.6);
         }
 
         .success-message {
+            font-family: 'art', sans-serif;
             display: none;
             background: rgba(31, 31, 31, 0.2);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(5px);
             border: 2px solid rgba(26, 26, 26, 0.3);
             color: white;
-            padding: 20px;
+            padding: 5px;
             border-radius: 15px;
             margin-top: 25px;
             text-align: center;
@@ -655,8 +681,8 @@
             .countdown-section,
             .map-section,
             .rsvp-section {
-                padding: 30px 20px;
-                margin: 20px 0;
+                padding: 30px 5px;
+                margin: 5px 0;
             }
 
             .couple-names {
@@ -664,7 +690,7 @@
             }
 
             .ampersand {
-                margin: 0 10px;
+                margin: 0 5px;
             }
 
             .form-row {
@@ -683,7 +709,7 @@
             }
 
             .countdown-item {
-                padding: 20px 15px;
+                padding: 5px 15px;
             }
 
             .countdown-number {
@@ -701,18 +727,17 @@
         <!-- Hero Section -->
         <section class="hero-section">
             <div class="hero-content">
-                <div class="date-badge">September 25, 2024</div>
+                <div class="date-badge">Սետեմբերի 25, 2025</div>
                 <h1 class="couple-names">
-                    Ռաֆիկ<span class="ampersand">և</span>Նարե
+                    Րաֆֆի<span class="ampersand">և</span>Նանե
                 </h1>
                 <p class="wedding-subtitle">Մենք ամուսնանում ենք․․․</p>
 
                 <div class="event-details">
-                    <div class="event-time">5:00 PM</div>
+                    <div class="event-time">Շուտով․․․</div>
                     <div class="event-location">
-                        The Crystal Gardens<br>
-                        456 Romance Boulevard<br>
-                        Love City, LC 78910
+                        Ուրախ կլինենք տեսնել Ձեզ<br>
+                        Մեր հարսանիքին․․․<br>
                     </div>
                 </div>
             </div>
@@ -720,76 +745,82 @@
 
         <!-- Countdown Section -->
         <section class="countdown-section">
-            <h2 class="countdown-title">Until Forever Begins</h2>
+            <h2 class="countdown-title">Հետհաշվարկը սկսված է․․․</h2>
             <div class="countdown-grid" id="countdown">
                 <div class="countdown-item">
                     <span class="countdown-number" id="days">0</span>
-                    <span class="countdown-label">Days</span>
+                    <span class="countdown-label">Օր</span>
                 </div>
                 <div class="countdown-item">
                     <span class="countdown-number" id="hours">0</span>
-                    <span class="countdown-label">Hours</span>
+                    <span class="countdown-label">Ժամ</span>
                 </div>
                 <div class="countdown-item">
                     <span class="countdown-number" id="minutes">0</span>
-                    <span class="countdown-label">Minutes</span>
+                    <span class="countdown-label">Րոպե</span>
                 </div>
                 <div class="countdown-item">
                     <span class="countdown-number" id="seconds">0</span>
-                    <span class="countdown-label">Seconds</span>
+                    <span class="countdown-label">Վայրկյան</span>
                 </div>
             </div>
         </section>
 
         <!-- Location Section -->
         <section class="location-section">
-            <h2 class="section-title">Join Us Here</h2>
+            <h2 class="section-title">Ժամանակացույց</h2>
             <div class="venue-info">
-                <div class="venue-name">The Crystal Gardens</div>
-                <div class="venue-address">456 Romance Boulevard, Love City, LC 78910</div>
-                <a href="https://maps.google.com/?q=456+Romance+Boulevard,+Love+City,+LC+78910" target="_blank"
-                    class="map-btn">📍 See Map</a>
+                <div class="venue-name">ՀԱՐՍԻ ՏՈՒՆ</div>
+                <div class="venue-address">ք․ Վանաձոր, Տիգրան Մեծի 63</div>
+                <a href="https://www.google.com/maps/@40.8096532,44.4902966,21z?entry=ttu&g_ep=EgoyMDI1MDgxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank"
+                    class="map-btn">Տեսնել քարտեզը</a>
+            </div>
+            <div class="venue-info">
+                <div class="venue-name">Եկեղեցի</div>
+                <div class="venue-address">Վանաձորի Սուրբ Աստվածածին եկեղեցի</div>
+                <a href="https://www.google.com/maps/place/Holy+Mother+of+God+Church/@40.8148756,44.4957785,17z/data=!3m1!4b1!4m6!3m5!1s0x4041bc11e4353d11:0x960cb61035e3d808!8m2!3d40.8148756!4d44.4957785!16s%2Fm%2F0138whk7?entry=ttu&g_ep=EgoyMDI1MDgxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank"
+                    class="map-btn">Տեսնել քարտեզը</a>
+            </div>
+            <div class="venue-info">
+                <div class="venue-name">Ռեստորան</div>
+                <div class="venue-address">Պանորամա Ռեստորան</div>
+                <a href="https://www.google.com/maps/place/Panorama+Restaurant+Vanadzor/@40.8096532,44.4902966,18z/data=!4m6!3m5!1s0x4041bd1e4908d881:0xf2fa92c4ef16f2f4!8m2!3d40.8086328!4d44.4900707!16s%2Fg%2F11vlrt5954?entry=ttu&g_ep=EgoyMDI1MDgxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank"
+                    class="map-btn">Տեսնել քարտեզը</a>
             </div>
         </section>
 
         <!-- Photo Gallery Section -->
         <section class="gallery-section">
-            <h2 class="gallery-title">Our Love Story</h2>
+            <h2 class="gallery-title">Մեր պատմությունը․․․</h2>
             <div class="gallery-grid">
                 <div class="gallery-item">
                     <div class="gallery-placeholder">
-                        <div class="gallery-icon">📸</div>
-                        <div>First Date</div>
+                        <img src="images/1.jpg" alt="Մենք․․․" width="100%">
                     </div>
                 </div>
                 <div class="gallery-item">
                     <div class="gallery-placeholder">
-                        <div class="gallery-icon">💕</div>
-                        <div>The Proposal</div>
+                        <img src="images/2.jpg" alt="Մենք․․․" width="100%">
                     </div>
                 </div>
                 <div class="gallery-item">
                     <div class="gallery-placeholder">
-                        <div class="gallery-icon">🌅</div>
-                        <div>Engagement Photos</div>
+                        <img src="images/3.jpg" alt="Մենք․․․" width="100%">
                     </div>
                 </div>
                 <div class="gallery-item">
                     <div class="gallery-placeholder">
-                        <div class="gallery-icon">🎉</div>
-                        <div>Engagement Party</div>
+                        <img src="images/4.jpg" alt="Մենք․․․" width="100%">
                     </div>
                 </div>
                 <div class="gallery-item">
                     <div class="gallery-placeholder">
-                        <div class="gallery-icon">✈️</div>
-                        <div>Our Adventures</div>
+                        <img src="images/5.jpg" alt="Մենք․․․" width="100%">
                     </div>
                 </div>
                 <div class="gallery-item">
                     <div class="gallery-placeholder">
-                        <div class="gallery-icon">💒</div>
-                        <div>Soon to be...</div>
+                        <img src="images/6.jpg" alt="Մենք․․․" width="100%">
                     </div>
                 </div>
             </div>
@@ -797,67 +828,56 @@
 
         <!-- RSVP Section -->
         <section class="rsvp-section">
-            <h2 class="rsvp-title">Will You Be There?</h2>
-            <p class="rsvp-subtitle">Please let us know by August 25, 2024</p>
+            <h2 class="rsvp-title">Կկարողանա՞ս գալ</h2>
+            <p class="rsvp-subtitle">Խնդրում եմ նշիր՝ արդյո՞ք կկարողանաս ներկա լինել մեր կյանքի ամենակարևոր իրադարձությանը․․․․</p>
 
             <form class="rsvp-form" id="rsvpForm">
                 <div class="form-row">
                     <div class="form-group">
-                        <label class="form-label" for="firstName">First Name *</label>
+                        <label class="form-label" for="firstName">Քո անունը *</label>
                         <input type="text" id="firstName" name="firstName" class="form-input" required>
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="lastName">Last Name *</label>
+                        <label class="form-label" for="lastName">Քո ազգանունը *</label>
                         <input type="text" id="lastName" name="lastName" class="form-input" required>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label" for="email">Email Address *</label>
-                    <input type="email" id="email" name="email" class="form-input" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Will you be joining us? *</label>
+                    <label class="form-label">Կմիանա՞ս մեզ *</label>
                     <div class="radio-group">
                         <div class="radio-item">
                             <input type="radio" id="attending-yes" name="attending" value="yes" required>
-                            <label for="attending-yes">Yes! Can't wait! ✨</label>
+                            <label for="attending-yes">Իհա՜րկե, անպայման․․․․</label>
                         </div>
                         <div class="radio-item">
                             <input type="radio" id="attending-no" name="attending" value="no" required>
-                            <label for="attending-no">Sorry, I can't make it 💔</label>
+                            <label for="attending-no">Ներեցեք, չեմ կարողանա գալ․․․</label>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group" id="guestsGroup" style="display: none;">
-                    <label class="form-label" for="guests">Total Guests (including yourself)</label>
+                    <label class="form-label" for="guests">Քա՞նի հյուր սպասենք ձեզնից</label>
                     <select id="guests" name="guests" class="form-select">
-                        <option value="1">1 Guest</option>
-                        <option value="2">2 Guests</option>
-                        <option value="3">3 Guests</option>
-                        <option value="4">4 Guests</option>
-                        <option value="5">5+ Guests</option>
+                        <option value="1">1 հյուր</option>
+                        <option value="2">2 հյուր</option>
+                        <option value="3">3 հյուր</option>
+                        <option value="4">4 հյուր</option>
+                        <option value="5">5+ հյուր</option>
                     </select>
                 </div>
 
-                <div class="form-group" id="dietaryGroup" style="display: none;">
-                    <label class="form-label" for="dietary">Dietary Preferences & Allergies</label>
-                    <textarea id="dietary" name="dietary" class="form-textarea" rows="3"
-                        placeholder="Let us know about any dietary restrictions, allergies, or special requests..."></textarea>
-                </div>
-
                 <div class="form-group">
-                    <label class="form-label" for="message">A Message for the Happy Couple</label>
+                    <label class="form-label" for="message">Նամակ՝ աշխարհի ամենաերջանիկ զույգին</label>
                     <textarea id="message" name="message" class="form-textarea" rows="4"
-                        placeholder="Share your excitement, well wishes, favorite memories, or questions..."></textarea>
+                        placeholder="Ուրախ կլինենք կարդալ մաղթանքներ, շնորհավորանքներ, կամ մի յուրահատուկ բան, որն անցնում է մտքովդ․․․"></textarea>
                 </div>
 
-                <button type="submit" class="submit-btn">Send Our Love 💕</button>
+                <button type="submit" class="submit-btn">Ուղարկել</button>
 
                 <div class="success-message" id="successMessage">
-                    🎉 Thank you! Your RSVP has been received. We can't wait to celebrate with you! ✨
+                    Շնորհակալ ենք պատասխանի համար։ Մենք սիրով ու անհամբերությամբ կսպասենք մեր հանդիպմանը․․․
                 </div>
             </form>
         </section>
@@ -938,11 +958,11 @@
             const successMessage = document.getElementById('successMessage');
 
             // Animation sequence
-            submitBtn.innerHTML = 'Sending Love... ✨';
+            submitBtn.innerHTML = 'Ուղարկվում է․․․․';
             submitBtn.style.transform = 'scale(0.98)';
 
             setTimeout(() => {
-                submitBtn.innerHTML = 'Love Sent! 💕';
+                submitBtn.innerHTML = 'Ուղարկվեց․․․';
                 submitBtn.style.background = 'linear-gradient(135deg, #10b981, #34d399)';
                 submitBtn.style.transform = 'scale(1)';
                 successMessage.style.display = 'block';
@@ -950,7 +970,7 @@
                 // Reset after delay
                 setTimeout(() => {
                     this.reset();
-                    submitBtn.innerHTML = 'Send Our Love 💕';
+                    submitBtn.innerHTML = 'Ուղարկել․․․';
                     submitBtn.style.background = 'var(--accent-gradient)';
                     successMessage.style.display = 'none';
                     guestsGroup.style.display = 'none';
