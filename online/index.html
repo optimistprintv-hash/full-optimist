@@ -24,7 +24,7 @@
         }
 
         body {
-            background-image: url(images/bg_couple.jpg);
+            background-image: url(images/bg_couple.webp);
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
@@ -32,8 +32,18 @@
             min-height: 100vh;
             color: var(--text-primary);
             overflow-x: hidden;
+            word-wrap: break-word;
+    overflow-wrap: break-word;
+
         }
 
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+        
         /* Magical sparkles animation */
         .particles {
             position: fixed;
@@ -135,22 +145,19 @@
         @font-face {
             font-family: 'MyArmFont';
             src: url('fonts/ArmAllegroU.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
+            font-display: swap;
         }
 
         @font-face {
             font-family: 'vicFont';
             src: url('fonts/Victory.otf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
+            font-display: swap;
         }
 
         @font-face {
             font-family: 'art';
             src: url('fonts/weblysleekuili.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
+            font-display: swap;
         }
 
         .couple-names {
@@ -314,7 +321,7 @@
 
         .countdown-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(15px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             gap: 5px;
             max-width: 600px;
             margin: 0 auto;
@@ -795,32 +802,32 @@
             <div class="gallery-grid">
                 <div class="gallery-item">
                     <div class="gallery-placeholder">
-                        <img src="images/1.jpg" alt="Մենք․․․" width="100%">
+                        <img src="images/6.webp" alt="Մենք․․․" width="100%">
                     </div>
                 </div>
                 <div class="gallery-item">
                     <div class="gallery-placeholder">
-                        <img src="images/2.jpg" alt="Մենք․․․" width="100%">
+                        <img src="images/5.webp" alt="Մենք․․․" width="100%">
                     </div>
                 </div>
                 <div class="gallery-item">
                     <div class="gallery-placeholder">
-                        <img src="images/3.jpg" alt="Մենք․․․" width="100%">
+                        <img src="images/4.webp" alt="Մենք․․․" width="100%">
                     </div>
                 </div>
                 <div class="gallery-item">
                     <div class="gallery-placeholder">
-                        <img src="images/4.jpg" alt="Մենք․․․" width="100%">
+                        <img src="images/3.webp" alt="Մենք․․․" width="100%">
                     </div>
                 </div>
                 <div class="gallery-item">
                     <div class="gallery-placeholder">
-                        <img src="images/5.jpg" alt="Մենք․․․" width="100%">
+                        <img src="images/2.webp" alt="Մենք․․․" width="100%">
                     </div>
                 </div>
                 <div class="gallery-item">
                     <div class="gallery-placeholder">
-                        <img src="images/6.jpg" alt="Մենք․․․" width="100%">
+                        <img src="images/1.webp" alt="Մենք․․․" width="100%">
                     </div>
                 </div>
             </div>
