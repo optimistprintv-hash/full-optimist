@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Հարսանյաց Հրավեր</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #D4A574;
+            --secondary-color: #F5F5F5;
+            --text-dark: #5D4E37;
+            --text-light: #8B7355;
+            --white: #FFFFFF;
+            --shadow: rgba(212, 165, 116, 0.2);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans Armenian', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(212, 165, 116, 0.1), rgba(212, 165, 116, 0.1)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" stop-color="%23F5F5F5"/><stop offset="100%" stop-color="%23D4A574" stop-opacity="0.1"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23a)"/></svg>');
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--primary-color) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.1;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-50px, -50px) rotate(360deg); }
+        }
+
+        .hero-content {
+            z-index: 1;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease forwards;
+        }
+
+        .names {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 300;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .tagline {
+            font-size: clamp(1rem, 4vw, 1.5rem);
+            color: var(--text-light);
+            font-weight: 400;
+            margin-top: 1rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Countdown Section */
+        .countdown-section {
+            padding: 4rem 1rem;
+            background: var(--secondary-color);
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .countdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .countdown-item {
+            background: var(--white);
+            padding: 1.5rem 1rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .countdown-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+        }
+
+        .countdown-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            padding: 4rem 1rem;
+            background: var(--white);
+        }
+
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-color);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            margin: 2rem 0;
+            opacity: 0;
+            animation: slideIn 0.8s ease forwards;
+        }
+
+        .timeline-item:nth-child(odd) {
+            animation-delay: 0.2s;
+        }
+
+        .timeline-item:nth-child(even) {
+            animation-delay: 0.4s;
+        }
+
+        .timeline-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px var(--shadow);
+            position: relative;
+            width: calc(50% - 30px);
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.02);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            transform: translateY(-50%);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            left: -20px;
+            border-right-color: var(--white);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            right: -20px;
+            border-left-color: var(--white);
+        }
+
+        .timeline-icon {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.2rem;
+            z-index: 1;
+        }
+
+        .timeline-time {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-event {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Location Section */
+        .location-section {
+            padding: 4rem 1rem;
+            background: var(--secondary-color);
+            text-align: center;
+        }
+
+        .map-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+        }
+
+        .map-button {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .map-button:hover {
+            background: var(--text-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        /* RSVP Section */
+        .rsvp-section {
+            padding: 4rem 1rem;
+            background: var(--white);
+            text-align: center;
+        }
+
+        .rsvp-form {
+            max-width: 500px;
+            margin: 2rem auto;
+            background: var(--secondary-color);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            background: var(--white);
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .submit-btn {
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 1rem 3rem;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .submit-btn:hover {
+            background: var(--text-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 4rem 1rem;
+            background: var(--secondary-color);
+            text-align: center;
+        }
+
+        .gallery {
+            max-width: 800px;
+            margin: 2rem auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .gallery-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-slide {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .gallery-slide img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: var(--white);
+            padding: 2rem 1rem 1rem;
+            font-size: 1.1rem;
+        }
+
+        .gallery-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .gallery-btn {
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-btn:hover {
+            background: var(--text-dark);
+            transform: scale(1.1);
+        }
+
+        /* Quote Section */
+        .quote-section {
+            padding: 4rem 1rem;
+            background: var(--white);
+            text-align: center;
+        }
+
+        .quote {
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            font-style: italic;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .quote::before,
+        .quote::after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .footer-text {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Decorative Elements */
+        .section-divider {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .divider-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 40px !important;
+            }
+            
+            .timeline-content::before {
+                left: -20px !important;
+                border-right-color: var(--white) !important;
+                border-left-color: transparent !important;
+            }
+            
+            .timeline-icon {
+                left: 20px;
+            }
+
+            .gallery-slide img {
+                height: 250px;
+            }
+        }
+
+        /* Fade in animation for sections */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="names">Անի & Արամ</h1>
+            <p class="tagline">Մենք սիրով սպասում ենք ձեզ:</p>
+        </div>
+    </section>
+
+    <!-- Countdown Section -->
+    <section class="countdown-section fade-in">
+        <h2 class="section-title">Մնացած ժամանակը</h2>
+        <div class="countdown">
+            <div class="countdown-item">
+                <span class="countdown-number" id="months">0</span>
+                <span class="countdown-label">ամիս</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="days">0</span>
+                <span class="countdown-label">օր</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="hours">0</span>
+                <span class="countdown-label">ժամ</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="minutes">0</span>
+                <span class="countdown-label">րոպե</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="seconds">0</span>
+                <span class="countdown-label">վայրկյան</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section fade-in">
+        <h2 class="section-title">Միջոցառման ժամանակացույց</h2>
+        <div class="section-divider">
+            <span class="divider-icon">❤</span>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-time">13:30</div>
+                    <div class="timeline-event">Հարսի տուն</div>
+                </div>
+                <div class="timeline-icon">🏠</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-time">15:00</div>
+                    <div class="timeline-event">Եկեղեցի</div>
+                </div>
+                <div class="timeline-icon">⛪</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-time">17:00</div>
+                    <div class="timeline-event">Ռեստորան</div>
+                </div>
+                <div class="timeline-icon">🍽️</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location-section fade-in">
+        <h2 class="section-title">Միջոցառման վայրը</h2>
+        <div class="section-divider">
+            <span class="divider-icon">🌸</span>
+        </div>
+        <p style="margin-bottom: 2rem; font-size: 1.1rem;">Ռեստորան "Արարատ", Երևան, Մաշտոցի պող. 25</p>
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3047.8426459596895!2d44.5011494!3d40.1775756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDEwJzM5LjMiTiA0NMKwMzAnMDQuMSJF!5e0!3m2!1sen!2s!4v1629789456789!5m2!1sen!2s"
+                loading="lazy">
+            </iframe>
+        </div>
+        <a href="https://maps.google.com/?q=40.177576,44.501149" target="_blank" class="map-button">
+            Բացել Google Maps-ում
+        </a>
+    </section>
+
+    <!-- RSVP Section -->
+    <section class="rsvp-section fade-in">
+        <h2 class="section-title">Հաստատեք ներկայությունը</h2>
+        <div class="section-divider">
+            <span class="divider-icon">💌</span>
+        </div>
+        <form class="rsvp-form" id="rsvpForm">
+            <div class="form-group">
+                <label for="firstName">Անուն</label>
+                <input type="text" id="firstName" name="firstName" required>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Ազգանուն</label>
+                <input type="text" id="lastName" name="lastName" required>
+            </div>
+            <div class="form-group">
+                <label for="attendance">Ներկայություն</label>
+                <select id="attendance" name="attendance" required>
+                    <option value="">Ընտրեք...</option>
+                    <option value="yes">Այո, կմասնակցեմ</option>
+                    <option value="no">Ցավոք, չեմ կարող մասնակցել</option>
+                </select>
+            </div>
+            <button type="submit" class="submit-btn">Ուղարկել</button>
+        </form>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section fade-in">
+        <h2 class="section-title">Մեր պատմությունը</h2>
+        <div class="section-divider">
+            <span class="divider-icon">📸</span>
+        </div>
+        <div class="gallery">
+            <div class="gallery-track" id="galleryTrack">
+                <div class="gallery-slide">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'><rect width='100%' height='100%' fill='%23F5F5F5'/><text x='50%' y='50%' text-anchor='middle' dominant-baseline='middle' fill='%23D4A574' font-size='24' font-family='Arial'>Մեր առաջին լուսանկարը</text></svg>" alt="Առաջին լուսանկար">
+                    <div class="gallery-caption">Մեր առաջին լուսանկարը</div>
+                </div>
+                <div class="gallery-slide">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'><rect width='100%' height='100%' fill='%23F5F5F5'/><text x='50%' y='50%' text-anchor='middle' dominant-baseline='middle' fill='%23D4A574' font-size='24' font-family='Arial'>Նշանադրություն</text></svg>" alt="Նշանադրություն">
+                    <div class="gallery-caption">Մեր նշանադրությունը</div>
+                </div>
+                <div class="gallery-slide">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'><rect width='100%' height='100%' fill='%23F5F5F5'/><text x='50%' y='50%' text-anchor='middle' dominant-baseline='middle' fill='%23D4A574' font-size='24' font-family='Arial'>Համատեղ պահեր</text></svg>" alt="Համատեղ պահեր">
+                    <div class="gallery-caption">Մեր համատեղ պահերը</div>
+                </div>
+            </div>
+        </div>
+        <div class="gallery-nav">
+            <button class="gallery-btn" id="prevBtn">‹</button>
+            <button class="gallery-btn" id="nextBtn">›</button>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="quote-section fade-in">
+        <div class="section-divider">
+            <span class="divider-icon">💕</span>
+        </div>
+        <p class="quote">Սերը ամենակարևոր բանն է այս աշխարհում՝ միակ բանը, որը մենք իսկապես կարող ենք պահել՝ այն տալով:</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer-text">Մենք սիրով սպասում ենք ձեր ներկայությանը:</p>
+    </footer>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const weddingDate = new Date('September 15, 2025 13:30:00').getTime();
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            if (distance > 0) {
+                const months = Math.floor(distance / (1000 * 60 * 60 * 24 * 30.44));
+                const days = Math.floor((distance % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('months').textContent = months;
+                document.getElementById('days').textContent = days;
+                document.getElementById('hours').textContent = hours;
+                document.getElementById('minutes').textContent = minutes;
+                document.getElementById('seconds').textContent = seconds;
+            }
+        }
+
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Gallery functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.gallery-slide');
+        const totalSlides = slides.length;
+        const track = document.getElementById('galleryTrack');
+
+        function updateGallery() {
+            const translateX = -currentSlide * 100;
+            track.style.transform = `translateX(${translateX}%)`;
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateGallery();
+        });
+
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateGallery();
+        });
+
+        // Touch/swipe support for gallery
+        let startX = 0;
+        let endX = 0;
+
+        track.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        });
+
+        track.addEventListener('touchend', (e) => {
+            endX = e.changedTouches[0].clientX;
+            if (startX - endX > 50) {
+                // Swipe left
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateGallery();
+            } else if (endX - startX > 50) {
+                // Swipe right
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                updateGallery();
+            }
+        });
+
+        // Auto-advance gallery
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateGallery();
+        }, 5000);
+
+        // RSVP Form
+        document.getElementById('rsvpForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const attendance = document.getElementById('attendance').value;
+            
+            alert(`Շնորհակալություն, ${firstName} ${lastName}! Ձեր պատասխանը գրանցվեց։`);
+            
+            // Reset form
+            document.getElementById('rsvpForm').reset();
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero');
+            const speed = scrolled * 0.5;
+            parallax.style.backgroundPosition = `center ${speed}px`;
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+        });
+
+        document.body.style.opacity = '0';
+        document.body.style.transition = 'opacity 0.5s ease-in-out';
+    </script>
+</body>
+</html>
