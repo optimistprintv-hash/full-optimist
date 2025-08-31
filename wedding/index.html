@@ -9,10 +9,15 @@
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@300;400;500;600;700&display=swap');
 
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: bdorder-box;
-        }
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden; /* արգելում ա աջ/ձախ սկրոլը */
+}
 
         :root {
             --primary-color: #D4A574;
@@ -532,13 +537,34 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+.music-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--primary-color);
+    color: var(--white);
+    border: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 5px 15px var(--shadow);
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.music-btn:hover {
+    background: var(--text-dark);
+    transform: scale(1.1);
+}
+
+
     </style>
 </head>
+<audio id="bgMusic" src="music.mp3" loop></audio>
 
-<body>
-    <audio autoplay loop hidden>
-
-</audio>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -664,7 +690,7 @@
                 </div>
                 <div class="gallery-slide">
                     <img src="images/3.jpg" alt="">
-                    <div class="gallery-caption">Մենք, պարզապես․․․</div>
+                    <div class="gallery-caption">Մենք` պարզապես․․․</div>
                 </div>
             </div>
         </div>
@@ -687,6 +713,9 @@
     <footer class="footer">
         <p class="footer-text">Մենք սիրով սպասում ենք ձեր ներկայությանը:</p>
     </footer>
+
+    <button class="music-btn" id="musicBtn">🎵</button>
+
 
     <script>
         // Countdown Timer
@@ -808,6 +837,56 @@
 
         document.body.style.opacity = '0';
         document.body.style.transition = 'opacity 0.5s ease-in-out';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   const music = document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicBtn");
+
+let isPlaying = false;
+
+musicBtn.addEventListener("click", () => {
+    if (isPlaying) {
+        music.pause();
+        musicBtn.textContent = ". ♬ ݁˖"; // դադարի նշան
+    } else {
+        music.play();
+        musicBtn.textContent = ". ♬ ݁˖"; // նվագի նշան
+    }
+    isPlaying = !isPlaying;
+});
+
+// փորձենք ավտոմատ սկսել
+window.addEventListener("load", () => {
+    music.play().then(() => {
+        isPlaying = true;
+        musicBtn.textContent = ". ♬ ݁˖";
+    }).catch(() => {
+        // եթե browser-ը չի թողնում autoplay, թող կոճակը սպասի
+        musicBtn.textContent = ". ♬ ݁˖";
+    });
+});
+
+
+
+
+
     </script>
 </body>
 
