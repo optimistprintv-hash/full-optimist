@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="hy">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Հարսանյաց Հրավեր</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@300;400;500;600;700&display=swap');
-        
+
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            box-sizing: bdorder-box;
         }
 
         :root {
@@ -37,7 +38,7 @@
         .hero {
             height: 100vh;
             background: linear-gradient(rgba(212, 165, 116, 0.1), rgba(212, 165, 116, 0.1)),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" stop-color="%23F5F5F5"/><stop offset="100%" stop-color="%23D4A574" stop-opacity="0.1"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23a)"/></svg>');
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" stop-color="%23F5F5F5"/><stop offset="100%" stop-color="%23D4A574" stop-opacity="0.1"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23a)"/></svg>');
             background-size: cover;
             background-attachment: fixed;
             display: flex;
@@ -63,8 +64,13 @@
         }
 
         @keyframes float {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            100% { transform: translate(-50px, -50px) rotate(360deg); }
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50px, -50px) rotate(360deg);
+            }
         }
 
         .hero-content {
@@ -93,6 +99,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -114,11 +121,18 @@
         }
 
         .countdown {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            display: flex;
+            flex-direction: column;
             gap: 1rem;
             max-width: 600px;
             margin: 0 auto;
+        }
+
+        .countdown-top,
+        .countdown-bottom {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
         }
 
         .countdown-item {
@@ -127,6 +141,7 @@
             border-radius: 15px;
             box-shadow: 0 5px 20px var(--shadow);
             transition: transform 0.3s ease;
+            flex: 1;
         }
 
         .countdown-item:hover {
@@ -255,6 +270,7 @@
                 opacity: 0;
                 transform: translateX(-30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -286,12 +302,12 @@
             display: inline-block;
             background: var(--primary-color);
             color: var(--white);
-            padding: 1rem 2rem;
-            border-radius: 25px;
+            padding: 0.5rem 0.5rem;
+            border-radius: 10px;
             text-decoration: none;
             margin-top: 1rem;
             transition: all 0.3s ease;
-            font-weight: 500;
+            font-size: 0.8rem;
         }
 
         .map-button:hover {
@@ -390,17 +406,19 @@
         }
 
         .gallery-slide img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-        }
+    width: 100%;
+    height: 400px;
+    object-fit: cover; /* լցնում ա, բայց կարող ա կտրի */
+    border-radius: 15px;
+}
+
 
         .gallery-caption {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
             color: var(--white);
             padding: 2rem 1rem 1rem;
             font-size: 1.1rem;
@@ -482,18 +500,18 @@
             .timeline::before {
                 left: 20px;
             }
-            
+
             .timeline-content {
                 width: calc(100% - 60px);
                 margin-left: 40px !important;
             }
-            
+
             .timeline-content::before {
                 left: -20px !important;
                 border-right-color: var(--white) !important;
                 border-left-color: transparent !important;
             }
-            
+
             .timeline-icon {
                 left: 20px;
             }
@@ -516,11 +534,16 @@
         }
     </style>
 </head>
+
 <body>
+    <audio autoplay loop hidden>
+  <source src="/images/music.mp3" type="audio/mpeg">
+</audio>
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1 class="names">Անի & Արամ</h1>
+            <h1 class="names">Արամ & Անի</h1>
             <p class="tagline">Մենք սիրով սպասում ենք ձեզ:</p>
         </div>
     </section>
@@ -529,27 +552,32 @@
     <section class="countdown-section fade-in">
         <h2 class="section-title">Մնացած ժամանակը</h2>
         <div class="countdown">
-            <div class="countdown-item">
-                <span class="countdown-number" id="months">0</span>
-                <span class="countdown-label">ամիս</span>
+            <div class="countdown-top">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="months">0</span>
+                    <span class="countdown-label">ամիս</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">0</span>
+                    <span class="countdown-label">օր</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">0</span>
+                    <span class="countdown-label">ժամ</span>
+                </div>
             </div>
-            <div class="countdown-item">
-                <span class="countdown-number" id="days">0</span>
-                <span class="countdown-label">օր</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-number" id="hours">0</span>
-                <span class="countdown-label">ժամ</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-number" id="minutes">0</span>
-                <span class="countdown-label">րոպե</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-number" id="seconds">0</span>
-                <span class="countdown-label">վայրկյան</span>
+            <div class="countdown-bottom">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">0</span>
+                    <span class="countdown-label">րոպե</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">0</span>
+                    <span class="countdown-label">վայրկյան</span>
+                </div>
             </div>
         </div>
+
     </section>
 
     <!-- Timeline Section -->
@@ -562,21 +590,28 @@
             <div class="timeline-item">
                 <div class="timeline-content">
                     <div class="timeline-time">13:30</div>
-                    <div class="timeline-event">Հարսի տուն</div>
+                    <div class="timeline-event">Հարսի տուն | ք․ Վանաձոր, Տիգրան Մեծի 63</div>
+                    <a href="https://www.google.com/maps/@40.8096532,44.4902966,21z?entry=ttu&g_ep=EgoyMDI1MDgxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="map-button">
+                        Բացել Google Maps-ում </a>
                 </div>
                 <div class="timeline-icon">🏠</div>
             </div>
             <div class="timeline-item">
                 <div class="timeline-content">
                     <div class="timeline-time">15:00</div>
-                    <div class="timeline-event">Եկեղեցի</div>
+                    <div class="timeline-event">Եկեղեցի | Վանաձորի Սուրբ Աստվածածին եկեղեցի</div>
+                    <a href="https://www.google.com/maps/place/Holy+Mother+of+God+Church/@40.8148756,44.4957785,17z/data=!3m1!4b1!4m6!3m5!1s0x4041bc11e4353d11:0x960cb61035e3d808!8m2!3d40.8148756!4d44.4957785!16s%2Fm%2F0138whk7?entry=ttu&g_ep=EgoyMDI1MDgxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="map-button">
+                        Բացել Google Maps-ում </a>
                 </div>
                 <div class="timeline-icon">⛪</div>
             </div>
             <div class="timeline-item">
                 <div class="timeline-content">
                     <div class="timeline-time">17:00</div>
-                    <div class="timeline-event">Ռեստորան</div>
+                    <div class="timeline-event">Ռեստորան | Վանաձորի Պանորամա Ռեստորան</div>
+                    <a href="https://www.google.com/maps/place/Panorama+Restaurant+Vanadzor/@40.8096532,44.4902966,18z/data=!4m6!3m5!1s0x4041bd1e4908d881:0xf2fa92c4ef16f2f4!8m2!3d40.8086328!4d44.4900707!16s%2Fg%2F11vlrt5954?entry=ttu&g_ep=EgoyMDI1MDgxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="map-button">
+                        Բացել Google Maps-ում </a>
+
                 </div>
                 <div class="timeline-icon">🍽️</div>
             </div>
@@ -585,20 +620,7 @@
 
     <!-- Location Section -->
     <section class="location-section fade-in">
-        <h2 class="section-title">Միջոցառման վայրը</h2>
-        <div class="section-divider">
-            <span class="divider-icon">🌸</span>
-        </div>
-        <p style="margin-bottom: 2rem; font-size: 1.1rem;">Ռեստորան "Արարատ", Երևան, Մաշտոցի պող. 25</p>
-        <div class="map-container">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3047.8426459596895!2d44.5011494!3d40.1775756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDEwJzM5LjMiTiA0NMKwMzAnMDQuMSJF!5e0!3m2!1sen!2s!4v1629789456789!5m2!1sen!2s"
-                loading="lazy">
-            </iframe>
-        </div>
-        <a href="https://maps.google.com/?q=40.177576,44.501149" target="_blank" class="map-button">
-            Բացել Google Maps-ում
-        </a>
+        <p class="footer-text">Մենք ուրախ կլինենք Ձեզ տեսնել մեր հարսանիքին․․․</p>
     </section>
 
     <!-- RSVP Section -->
@@ -637,16 +659,12 @@
         <div class="gallery">
             <div class="gallery-track" id="galleryTrack">
                 <div class="gallery-slide">
-                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'><rect width='100%' height='100%' fill='%23F5F5F5'/><text x='50%' y='50%' text-anchor='middle' dominant-baseline='middle' fill='%23D4A574' font-size='24' font-family='Arial'>Մեր առաջին լուսանկարը</text></svg>" alt="Առաջին լուսանկար">
+                    <img src="/images/1.jpg" alt="">
                     <div class="gallery-caption">Մեր առաջին լուսանկարը</div>
                 </div>
                 <div class="gallery-slide">
-                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'><rect width='100%' height='100%' fill='%23F5F5F5'/><text x='50%' y='50%' text-anchor='middle' dominant-baseline='middle' fill='%23D4A574' font-size='24' font-family='Arial'>Նշանադրություն</text></svg>" alt="Նշանադրություն">
-                    <div class="gallery-caption">Մեր նշանադրությունը</div>
-                </div>
-                <div class="gallery-slide">
-                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'><rect width='100%' height='100%' fill='%23F5F5F5'/><text x='50%' y='50%' text-anchor='middle' dominant-baseline='middle' fill='%23D4A574' font-size='24' font-family='Arial'>Համատեղ պահեր</text></svg>" alt="Համատեղ պահեր">
-                    <div class="gallery-caption">Մեր համատեղ պահերը</div>
+                    <img src="/images/3.jpg" alt="">
+                    <div class="gallery-caption">Մենք, պարզապես․․․</div>
                 </div>
             </div>
         </div>
@@ -661,7 +679,8 @@
         <div class="section-divider">
             <span class="divider-icon">💕</span>
         </div>
-        <p class="quote">Սերը ամենակարևոր բանն է այս աշխարհում՝ միակ բանը, որը մենք իսկապես կարող ենք պահել՝ այն տալով:</p>
+        <p class="quote">Սերը ամենակարևոր բանն է այս աշխարհում՝ միակ բանը, որը մենք իսկապես կարող ենք պահել՝ այն տալով:
+        </p>
     </section>
 
     <!-- Footer -->
@@ -749,9 +768,9 @@
             const firstName = document.getElementById('firstName').value;
             const lastName = document.getElementById('lastName').value;
             const attendance = document.getElementById('attendance').value;
-            
+
             alert(`Շնորհակալություն, ${firstName} ${lastName}! Ձեր պատասխանը գրանցվեց։`);
-            
+
             // Reset form
             document.getElementById('rsvpForm').reset();
         });
@@ -791,4 +810,5 @@
         document.body.style.transition = 'opacity 0.5s ease-in-out';
     </script>
 </body>
+
 </html>
