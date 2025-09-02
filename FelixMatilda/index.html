@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ֆելիքս և Մաթիլդա</title>
+    <link rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #dbdbdb1e 0%, #b8b8b81a 50%, #c4c4c41e 100%);
+            --accent-gradient: linear-gradient(135deg, #96969628 0%, #9797971f 100%);
+            --glass-bg: rgba(175, 175, 175, 0.1);
+            --glass-border: rgba(173, 173, 173, 0.2);
+            --text-primary: #ffffff;
+            --text-secondary: #ffffff;
+            --text-light: rgba(255, 255, 255, 0.9);
+        }
+
+        body {
+            background-image: url(images/bg.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax Effect */
+            min-height: 100vh;
+            color: var(--text-primary);
+            overflow-x: hidden;
+            word-wrap: break-word;
+    overflow-wrap: break-word;
+
+        }
+
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+        
+        /* Magical sparkles animation */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, #010b16 0%, #707070 50%, #333333 100%);
+            border-radius: 50%;
+            animation: sparkle 4s infinite ease-in-out;
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                transform: scale(0) rotate(0deg);
+                opacity: 0;
+                filter: brightness(1) blur(0px);
+            }
+            25% {
+                transform: scale(1.5) rotate(90deg);
+                opacity: 1;
+                filter: brightness(2) blur(1px);
+            }
+            50% {
+                transform: scale(1) rotate(180deg);
+                opacity: 0.8;
+                filter: brightness(1.5) blur(2px);
+            }
+            75% {
+                transform: scale(1.2) rotate(270deg);
+                opacity: 0.6;
+                filter: brightness(2.5) blur(1px);
+            }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 5px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(2px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 60px 40px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 25px 50px rgba(90, 90, 90, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(158, 158, 158, 0.425) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(156, 156, 156, 0.699) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(131, 131, 131, 0.486) 0%, transparent 50%);
+            animation: morphBackground 8s ease-in-out infinite;
+        }
+
+        @keyframes morphBackground {
+
+            0%,
+            100% {
+                transform: scale(1) rotate(0deg);
+                filter: blur(0px);
+            }
+
+            33% {
+                transform: scale(1.1) rotate(5deg);
+                filter: blur(2px);
+            }
+
+            66% {
+                transform: scale(0.9) rotate(-3deg);
+                filter: blur(1px);
+            }
+        }
+
+        @font-face {
+            font-family: 'MyArmFont';
+            src: url('fonts/ArmAllegroU.ttf') format('truetype');
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'vicFont';
+            src: url('fonts/Victory.otf') format('truetype');
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'art';
+            src: url('fonts/weblysleekuili.ttf') format('truetype');
+            font-display: swap;
+        }
+
+        .couple-names {
+            font-family: 'MyArmFont', sans-serif;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .date-badge {
+            font-family: 'art', sans-serif;
+            display: inline-block;
+            background: var(--accent-gradient);
+            color: white;
+            padding: 5px 30px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 30px rgba(150, 150, 150, 0.3);
+            animation: heartbeat 2s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .date-badge::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(148, 148, 148, 0.4);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: ripple 3s infinite;
+        }
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes ripple {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 1;
+            }
+
+
+            100% {
+                width: 200px;
+                height: 200px;
+                opacity: 0;
+            }
+        }
+
+        .couple-names {
+            font-size: clamp(4rem, 8vw, 7.5rem);
+            font-weight: 700;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(97, 97, 97, 0.3);
+            margin: px 0;
+            position: relative;
+        }
+
+        .ampersand {
+            color: #ffffff;
+            font-size: 0.8em;
+            margin: 0 5px;
+            display: inline-block;
+            animation: dance 5s ease-in-out infinite;
+        }
+
+        @keyframes dance {
+
+            0%,
+            100% {
+                transform: rotate(0deg) scale(1) translateY(0px);
+            }
+
+            25% {
+                transform: rotate(-10deg) scale(1.1) translateY(-5px);
+            }
+
+            50% {
+                transform: rotate(5deg) scale(0.95) translateY(3px);
+            }
+
+            75% {
+                transform: rotate(8deg) scale(1.05) translateY(-2px);
+            }
+        }
+
+        .wedding-subtitle {
+            font-family: 'art', sans-serif;
+            font-size: 1.3rem;
+            color: var(--text-light);
+            font-weight: 300;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        .event-details {
+            background: rgba(99, 99, 99, 0.075);
+            backdrop-filter: blur(5px);
+            border-radius: 5px;
+            padding: 30px;
+            margin: 30px auto;
+            max-width: 400px;
+            border: 1px solid rgba(112, 112, 112, 0.2);
+        }
+
+        .event-time {
+            font-family: 'art', sans-serif;
+            font-family: 'vicFont', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .event-location {
+            font-family: 'art', sans-serif;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Countdown Section */
+        .countdown-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(5px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 60px 40px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 25px 50px rgba(95, 95, 95, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .countdown-title {
+            font-family: 'vicFont', sans-serif;
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+
+        .countdown-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 5px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .countdown-item {
+            background: var(--primary-gradient);
+            border-radius: 5px;
+            padding: 30px 5px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            transform: translateY(0);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .countdown-item:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(100, 100, 100, 0.4);
+        }
+
+        .countdown-item::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, transparent, rgba(107, 107, 107, 0.3), transparent);
+            animation: wave 4s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0% {
+                top: -100%;
+                transform: skewY(0deg);
+            }
+
+            50% {
+                top: 50%;
+                transform: skewY(5deg);
+            }
+
+            100% {
+                top: 150%;
+                transform: skewY(0deg);
+            }
+        }
+
+        .countdown-number {
+            font-family: 'art', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .countdown-label {
+            font-family: 'art', sans-serif;
+            font-size: 1rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Location Section */
+        .location-section {
+            background: rgba(255, 255, 255, 0.116);
+            backdrop-filter: blur(5px);
+            border-radius: 30px;
+            padding: 50px 40px;
+            margin: 40px 0;
+            box-shadow: 0 25px 50px rgba(92, 92, 92, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'vicFont', sans-serif;
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+
+        .venue-info {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: var(--accent-gradient);
+            border-radius: 5px;
+            color: rgb(255, 255, 255);
+        }
+
+        .venue-name {
+            font-family: 'art', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .venue-address {
+            font-family: 'art', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            opacity: 0.9;
+        }
+
+        .map-btn {
+            font-family: 'art', sans-serif;
+            display: inline-block;
+            background: var(--primary-gradient);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 5px 30px rgba(107, 107, 109, 0.3);
+        }
+
+        .map-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(107, 105, 105, 0.5);
+        }
+
+        /* Photo Gallery Section */
+        .gallery-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(5px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 50px 40px;
+            margin: 40px 0;
+            box-shadow: 0 25px 50px rgba(83, 82, 82, 0.1);
+        }
+
+        .gallery-title {
+            font-family: 'vicFont', sans-serif;
+            font-size: 2.5rem;
+            color: white;
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 5px;
+            margin-bottom: 30px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 5px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            background: linear-gradient(135deg, #7e7e7e60, rgba(124, 124, 124, 0.151));
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 5px 40px rgba(102, 102, 102, 0.3);
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(49, 49, 49, 0.158);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        .gallery-placeholder {
+            font-family: 'art', sans-serif;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-align: center;
+            padding: 5px;
+        }
+
+
+        /* RSVP Section */
+        .rsvp-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(5px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 50px 40px;
+            margin: 40px 0;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .rsvp-title {
+            font-family: 'vicFont', sans-serif;
+            font-size: 2.5rem;
+            color: white;
+            text-align: center;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .rsvp-subtitle {
+            font-family: 'art', sans-serif;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+
+        .rsvp-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            font-family: 'art', sans-serif;
+            display: block;
+            color: white;
+            font-weight: 500;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            font-family: 'art', sans-serif;
+            width: 100%;
+            padding: 15px 5px;
+            background: rgba(49, 49, 49, 0.1);
+            border: 2px solid rgba(31, 31, 31, 0.2);
+            border-radius: 15px;
+            color: rgb(0, 0, 0);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #ffecd2;
+            background: rgba(31, 27, 27, 0.15);
+            box-shadow: 0 0 5px rgba(44, 41, 37, 0.3);
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 30px;
+            margin-top: 15px;
+            justify-content: center;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            padding: 15px 25px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .radio-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .radio-item input[type="radio"] {
+            accent-color: #464646;
+            width: 5px;
+            height: 5px;
+        }
+
+        .radio-item label {
+            font-family: 'art', sans-serif;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .submit-btn {
+            font-family: 'art', sans-serif;
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            padding: 18px 50px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 35px rgba(54, 54, 54, 0.4);
+            display: block;
+            margin: 40px auto 0;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 40px rgba(58, 58, 58, 0.6);
+        }
+
+        .success-message {
+            font-family: 'art', sans-serif;
+            display: none;
+            background: rgba(31, 31, 31, 0.2);
+            backdrop-filter: blur(5px);
+            border: 2px solid rgba(26, 26, 26, 0.3);
+            color: white;
+            padding: 5px;
+            border-radius: 15px;
+            margin-top: 25px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .hero-section,
+            .countdown-section,
+            .map-section,
+            .rsvp-section {
+                padding: 30px 5px;
+                margin: 5px 0;
+            }
+
+            .couple-names {
+                font-size: clamp(2rem, 10vw, 3rem);
+            }
+
+            .ampersand {
+                margin: 0 5px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .radio-group {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .countdown-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .countdown-item {
+                padding: 5px 15px;
+            }
+
+            .countdown-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Floating Particles -->
+    <div class="particles"></div>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <div class="date-badge">Հոկտեմբերի 9, 2025</div>
+                <h1 class="couple-names">
+                    Ֆելիքս<span class="ampersand">և</span>Մաթիլդա
+                </h1>
+                <p class="wedding-subtitle">Մենք ամուսնանում ենք․․․</p>
+
+                <div class="event-details">
+                    <div class="event-time">Շուտով․․․</div>
+                    <div class="event-location">
+                        Ուրախ կլինենք տեսնել Ձեզ<br>
+                        Մեր հարսանիքին․․․<br>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Countdown Section -->
+        <section class="countdown-section">
+            <h2 class="countdown-title">Հետհաշվարկը սկսված է․․․</h2>
+            <div class="countdown-grid" id="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">0</span>
+                    <span class="countdown-label">Օր</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">0</span>
+                    <span class="countdown-label">Ժամ</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">0</span>
+                    <span class="countdown-label">Րոպե</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">0</span>
+                    <span class="countdown-label">Վայրկյան</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Location Section -->
+        <section class="location-section">
+            <h2 class="section-title">Ժամանակացույց</h2>
+            <div class="venue-info">
+                <div class="venue-name">ՀԱՐՍԻ ՏՈՒՆ</div>
+                <div class="venue-address">ք․ Վանաձոր, Տիգրան Մեծի 63</div>
+                <a href="https://www.google.com/maps/@40.8096532,44.4902966,21z?entry=ttu&g_ep=EgoyMDI1MDgxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank"
+                    class="map-btn">Տեսնել քարտեզը</a>
+            </div>
+            <div class="venue-info">
+                <div class="venue-name">Եկեղեցի</div>
+                <div class="venue-address">Վանաձորի Սուրբ Աստվածածին եկեղեցի</div>
+                <a href="https://www.google.com/maps/place/Holy+Mother+of+God+Church/@40.8148756,44.4957785,17z/data=!3m1!4b1!4m6!3m5!1s0x4041bc11e4353d11:0x960cb61035e3d808!8m2!3d40.8148756!4d44.4957785!16s%2Fm%2F0138whk7?entry=ttu&g_ep=EgoyMDI1MDgxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank"
+                    class="map-btn">Տեսնել քարտեզը</a>
+            </div>
+            <div class="venue-info">
+                <div class="venue-name">Ռեստորան</div>
+                <div class="venue-address">Պանորամա Ռեստորան</div>
+                <a href="https://www.google.com/maps/place/Panorama+Restaurant+Vanadzor/@40.8096532,44.4902966,18z/data=!4m6!3m5!1s0x4041bd1e4908d881:0xf2fa92c4ef16f2f4!8m2!3d40.8086328!4d44.4900707!16s%2Fg%2F11vlrt5954?entry=ttu&g_ep=EgoyMDI1MDgxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank"
+                    class="map-btn">Տեսնել քարտեզը</a>
+            </div>
+        </section>
+
+        <!-- Photo Gallery Section -->
+        <section class="gallery-section">
+            <h2 class="gallery-title">Մեր պատմությունը․․․</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <img src="images/7.jpg" alt="Մենք․․․" width="100%">
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <img src="images/6.jpg" alt="Մենք․․․" width="100%">
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <img src="images/5.jpg" alt="Մենք․․․" width="100%">
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <img src="images/4.jpg" alt="Մենք․․․" width="100%">
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <img src="images/3.jpg" alt="Մենք․․․" width="100%">
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <img src="images/2.jpg" alt="Մենք․․․" width="100%">
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <img src="images/1.jpg" alt="Մենք․․․" width="100%">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RSVP Section -->
+        <section class="rsvp-section">
+            <h2 class="rsvp-title">Կկարողանա՞ս գալ</h2>
+            <p class="rsvp-subtitle">Խնդրում եմ նշիր՝ արդյո՞ք կկարողանաս ներկա լինել մեր կյանքի ամենակարևոր իրադարձությանը․․․․</p>
+
+            <form class="rsvp-form" id="rsvpForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="firstName">Քո անունը *</label>
+                        <input type="text" id="firstName" name="firstName" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="lastName">Քո ազգանունը *</label>
+                        <input type="text" id="lastName" name="lastName" class="form-input" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Կմիանա՞ս մեզ *</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="attending-yes" name="attending" value="yes" required>
+                            <label for="attending-yes">Իհա՜րկե, անպայման․․․․</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="attending-no" name="attending" value="no" required>
+                            <label for="attending-no">Ներեցեք, չեմ կարողանա գալ․․․</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" id="guestsGroup" style="display: none;">
+                    <label class="form-label" for="guests">Քա՞նի հյուր սպասենք ձեզնից</label>
+                    <select id="guests" name="guests" class="form-select">
+                        <option value="1">1 հյուր</option>
+                        <option value="2">2 հյուր</option>
+                        <option value="3">3 հյուր</option>
+                        <option value="4">4 հյուր</option>
+                        <option value="5">5+ հյուր</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="message">Նամակ՝ աշխարհի ամենաերջանիկ զույգին</label>
+                    <textarea id="message" name="message" class="form-textarea" rows="4"
+                        placeholder="Ուրախ կլինենք կարդալ մաղթանքներ, շնորհավորանքներ, կամ մի յուրահատուկ բան, որն անցնում է մտքովդ․․․"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Ուղարկել</button>
+
+                <div class="success-message" id="successMessage">
+                    Շնորհակալ ենք պատասխանի համար։ Մենք սիրով ու անհամբերությամբ կսպասենք մեր հանդիպմանը․․․
+                </div>
+            </form>
+        </section>
+    </div>
+
+    <script>
+        // Create magical sparkles
+        function createParticles() {
+            const particlesContainer = document.querySelector('.particles');
+            const particleCount = 30;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.top = Math.random() * 100 + 'vh';
+                particle.style.animationDelay = Math.random() * 4 + 's';
+                particle.style.animationDuration = (3 + Math.random() * 2) + 's';
+
+                // Random colors for sparkles
+                const colors = ['#ffd700', '#ff69b4', '#00bfff', '#ff6b6b', '#4ecdc4', '#45b7d1'];
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.background = `radial-gradient(circle, ${randomColor} 0%, transparent 70%)`;
+
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Initialize particles
+        createParticles();
+
+        // Countdown Timer
+        function updateCountdown() {
+            const weddingDate = new Date('2025-10-09T17:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days > 0 ? days : 0;
+            document.getElementById('hours').textContent = hours > 0 ? hours : 0;
+            document.getElementById('minutes').textContent = minutes > 0 ? minutes : 0;
+            document.getElementById('seconds').textContent = seconds > 0 ? seconds : 0;
+
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = '<h3 style="color: var(--text-primary); font-size: 2rem;">💕 The Wedding Day is Here! 🎉</h3>';
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // RSVP Form Logic
+        const attendingRadios = document.querySelectorAll('input[name="attending"]');
+        const guestsGroup = document.getElementById('guestsGroup');
+        const dietaryGroup = document.getElementById('dietaryGroup');
+
+        attendingRadios.forEach(radio => {
+            radio.addEventListener('change', function () {
+                if (this.value === 'yes') {
+                    guestsGroup.style.display = 'block';
+                    dietaryGroup.style.display = 'block';
+                } else {
+                    guestsGroup.style.display = 'none';
+                    dietaryGroup.style.display = 'none';
+                }
+            });
+        });
+
+        // Form Submission with Animation
+        document.getElementById('rsvpForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const submitBtn = document.querySelector('.submit-btn');
+            const successMessage = document.getElementById('successMessage');
+
+            // Animation sequence
+            submitBtn.innerHTML = 'Ուղարկվում է․․․․';
+            submitBtn.style.transform = 'scale(0.98)';
+
+            setTimeout(() => {
+                submitBtn.innerHTML = 'Ուղարկվեց․․․';
+                submitBtn.style.background = 'linear-gradient(135deg, #10b981, #34d399)';
+                submitBtn.style.transform = 'scale(1)';
+                successMessage.style.display = 'block';
+
+                // Reset after delay
+                setTimeout(() => {
+                    this.reset();
+                    submitBtn.innerHTML = 'Ուղարկել․․․';
+                    submitBtn.style.background = 'var(--accent-gradient)';
+                    successMessage.style.display = 'none';
+                    guestsGroup.style.display = 'none';
+                    dietaryGroup.style.display = 'none';
+                }, 4000);
+            }, 2000);
+        });
+
+        // Smooth scrolling for better UX
+        document.addEventListener('DOMContentLoaded', function () {
+            // Add enhanced intersection observer for scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function (entries) {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0) scale(1)';
+                            entry.target.style.filter = 'blur(0px)';
+                        }, index * 200); // Staggered animation
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all sections with enhanced effects
+            document.querySelectorAll('section').forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(50px) scale(0.95)';
+                section.style.filter = 'blur(3px)';
+                section.style.transition = 'all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+
+</html>
