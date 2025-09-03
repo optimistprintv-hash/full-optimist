@@ -839,61 +839,62 @@ img {
         </section>
 
         <!-- RSVP Section -->
-        <section class="rsvp-section">
-            <h2 class="rsvp-title">Կկարողանա՞ս գալ</h2>
-            <p class="rsvp-subtitle">Խնդրում եմ նշիր՝ արդյո՞ք կկարողանաս ներկա լինել մեր կյանքի ամենակարևոր իրադարձությանը․․․․</p>
+<section class="rsvp-section">
+  <h2 class="rsvp-title">Կկարողանա՞ս գալ</h2>
+  <p class="rsvp-subtitle">
+    Խնդրում եմ նշիր՝ արդյո՞ք կկարողանաս ներկա լինել մեր կյանքի ամենակարևոր իրադարձությանը․․․․
+  </p>
 
-            <form class="rsvp-form" id="rsvpForm">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label" for="firstName">Քո անունը *</label>
-                        <input type="text" id="firstName" name="firstName" class="form-input" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="lastName">Քո ազգանունը *</label>
-                        <input type="text" id="lastName" name="lastName" class="form-input" required>
-                    </div>
-                </div>
+  <form name="rsvp" method="POST" data-netlify="true" class="rsvp-form">
+    <input type="hidden" name="form-name" value="rsvp">
 
-                <div class="form-group">
-                    <label class="form-label">Կմիանա՞ս մեզ *</label>
-                    <div class="radio-group">
-                        <div class="radio-item">
-                            <input type="radio" id="attending-yes" name="attending" value="yes" required>
-                            <label for="attending-yes">Իհա՜րկե, անպայման․․․․</label>
-                        </div>
-                        <div class="radio-item">
-                            <input type="radio" id="attending-no" name="attending" value="no" required>
-                            <label for="attending-no">Ներեցեք, չեմ կարողանա գալ․․․</label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group" id="guestsGroup" style="display: none;">
-                    <label class="form-label" for="guests">Քա՞նի հյուր սպասենք ձեզնից</label>
-                    <select id="guests" name="guests" class="form-select">
-                        <option value="1">1 հյուր</option>
-                        <option value="2">2 հյուր</option>
-                        <option value="3">3 հյուր</option>
-                        <option value="4">4 հյուր</option>
-                        <option value="5">5+ հյուր</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" for="message">Նամակ՝ աշխարհի ամենաերջանիկ զույգին</label>
-                    <textarea id="message" name="message" class="form-textarea" rows="4"
-                        placeholder="Ուրախ կլինենք կարդալ մաղթանքներ, շնորհավորանքներ, կամ մի յուրահատուկ բան, որն անցնում է մտքովդ․․․"></textarea>
-                </div>
-
-                <button type="submit" class="submit-btn">Ուղարկել</button>
-
-                <div class="success-message" id="successMessage">
-                    Շնորհակալ ենք պատասխանի համար։ Մենք սիրով ու անհամբերությամբ կսպասենք մեր հանդիպմանը․․․
-                </div>
-            </form>
-        </section>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label" for="firstName">Քո անունը *</label>
+        <input type="text" id="firstName" name="firstName" class="form-input" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="lastName">Քո ազգանունը *</label>
+        <input type="text" id="lastName" name="lastName" class="form-input" required>
+      </div>
     </div>
+
+    <div class="form-group">
+      <label class="form-label">Կմիանա՞ս մեզ *</label>
+      <div class="radio-group">
+        <div class="radio-item">
+          <input type="radio" id="attending-yes" name="attending" value="yes" required>
+          <label for="attending-yes">Իհա՜րկե, անպայման․․․․</label>
+        </div>
+        <div class="radio-item">
+          <input type="radio" id="attending-no" name="attending" value="no" required>
+          <label for="attending-no">Ներեցեք, չեմ կարողանա գալ․․․</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" id="guestsGroup" style="display: none;">
+      <label class="form-label" for="guests">Քա՞նի հյուր սպասենք ձեզնից</label>
+      <select id="guests" name="guests" class="form-select">
+        <option value="1">1 հյուր</option>
+        <option value="2">2 հյուր</option>
+        <option value="3">3 հյուր</option>
+        <option value="4">4 հյուր</option>
+        <option value="5">5+ հյուր</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="message">Նամակ՝ աշխարհի ամենաերջանիկ զույգին</label>
+      <textarea id="message" name="message" class="form-textarea" rows="4"
+        placeholder="Ուրախ կլինենք կարդալ մաղթանքներ, շնորհավորանքներ, կամ մի յուրահատուկ բան, որն անցնում է մտքովդ․․․"></textarea>
+    </div>
+
+    <button type="submit" class="submit-btn">Ուղարկել</button>
+  </form>
+</section>
+
+    
 
     <script>
         // Create magical sparkles
