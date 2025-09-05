@@ -723,6 +723,20 @@ img {
                 font-size: 2rem;
             }
         }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .footer-text {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
     </style>
 </head>
 
@@ -772,26 +786,26 @@ img {
                 </div>
             </div>
         </section>
-
+        
         <!-- Location Section -->
         <section class="location-section">
             <h2 class="section-title">Ժամանակացույց</h2>
             <div class="venue-info">
-                <div class="venue-name">ՀԱՐՍԻ ՏՈՒՆ</div>
-                <div class="venue-address">ք․ Վանաձոր, Տիգրան Մեծի 63</div>
-                <a href="https://www.google.com/maps/@40.8096532,44.4902966,21z?entry=ttu&g_ep=EgoyMDI1MDgxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank"
+                <div class="venue-name">12:00 | ՀԱՐՍԻ ՏՈՒՆ</div>
+                <div class="venue-address">ք․ Վանաձոր, Աղայան 3</div>
+                <a href="https://www.google.com/maps/place/3+Aghayan+St,+Vanadzor/@40.804712,44.5109774,21z/data=!4m5!3m4!1s0x4041bbf0eeb720c9:0xd72111cab92ea587!8m2!3d40.8047243!4d44.5110096?entry=ttu&g_ep=EgoyMDI1MDgzMC4wIKXMDSoASAFQAw%3D%3D" target="_blank"
                     class="map-btn">Տեսնել քարտեզը</a>
             </div>
             <div class="venue-info">
                 <div class="venue-name">Եկեղեցի</div>
-                <div class="venue-address">Վանաձորի Սուրբ Աստվածածին եկեղեցի</div>
-                <a href="https://www.google.com/maps/place/Holy+Mother+of+God+Church/@40.8148756,44.4957785,17z/data=!3m1!4b1!4m6!3m5!1s0x4041bc11e4353d11:0x960cb61035e3d808!8m2!3d40.8148756!4d44.4957785!16s%2Fm%2F0138whk7?entry=ttu&g_ep=EgoyMDI1MDgxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank"
+                <div class="venue-address">13:30 | Վանաձորի Սուրբ Գրիգոր Նարեկացի եկեղեցի</div>
+                <a href="https://www.google.com/maps/place/Saint+Gregory+of+Narek+Church/@40.8052694,44.4876906,17z/data=!3m1!4b1!4m6!3m5!1s0x4041bc019e3fffff:0x4c9e04f91597d607!8m2!3d40.8052694!4d44.4902655!16s%2Fg%2F11txmz9kmw?entry=ttu&g_ep=EgoyMDI1MDgzMC4wIKXMDSoASAFQAw%3D%3D" target="_blank"
                     class="map-btn">Տեսնել քարտեզը</a>
             </div>
             <div class="venue-info">
                 <div class="venue-name">Ռեստորան</div>
-                <div class="venue-address">Պանորամա Ռեստորան</div>
-                <a href="https://www.google.com/maps/place/Panorama+Restaurant+Vanadzor/@40.8096532,44.4902966,18z/data=!4m6!3m5!1s0x4041bd1e4908d881:0xf2fa92c4ef16f2f4!8m2!3d40.8086328!4d44.4900707!16s%2Fg%2F11vlrt5954?entry=ttu&g_ep=EgoyMDI1MDgxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank"
+                <div class="venue-address">17:00 | Միլագրո Ռեստորանային համալիր</div>
+                <a href="https://www.google.com/maps/place/%D0%9C%D0%B8%D0%BB%D0%B0%D0%B3%D1%80%D0%BE+%D0%A0%D0%B5%D1%81%D1%82%D0%BE%D1%80%D0%B0%D0%BD/@40.8099826,44.4939671,17z/data=!3m1!4b1!4m6!3m5!1s0x4041bd0063f4dbd7:0xe6666550dc4bf9e!8m2!3d40.8099826!4d44.496542!16s%2Fg%2F11y6wx35l0?entry=ttu&g_ep=EgoyMDI1MDgzMC4wIKXMDSoASAFQAw%3D%3D" target="_blank"
                     class="map-btn">Տեսնել քարտեզը</a>
             </div>
         </section>
@@ -893,7 +907,9 @@ img {
     <button type="submit" class="submit-btn">Ուղարկել</button>
   </form>
 </section>
-
+<section class="location-section fade-in">
+    <p class="footer-text">Ձեզ հետ բերեք ՍԵՐ, ժպիտներ ու անսահման դրական էմոցիաներ, ինչպես նաև հարմարավետ կոշիկներ՝ պարելու համար․․․</p>
+</section>
     
 
     <script>
@@ -924,7 +940,7 @@ img {
 
         // Countdown Timer
         function updateCountdown() {
-            const weddingDate = new Date('2025-10-09T17:00:00').getTime();
+            const weddingDate = new Date('2025-10-09T12:00:00').getTime();
             const now = new Date().getTime();
             const distance = weddingDate - now;
 
