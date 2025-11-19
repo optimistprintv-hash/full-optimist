@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Year 2026 Invitation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1729 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .firework {
+            position: fixed;
+            pointer-events: none;
+            animation: fireworkFade 1.5s ease-out forwards;
+        }
+
+        @keyframes fireworkFade {
+            0% { opacity: 1; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(1.2); }
+        }
+
+        .container {
+            max-width: 400px;
+            width: 90%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 40px 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 10;
+            animation: slideIn 0.8s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            animation: sparkleFloat 3s infinite;
+        }
+
+        .sparkle:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .sparkle:nth-child(2) { top: 20%; right: 15%; animation-delay: 0.5s; }
+        .sparkle:nth-child(3) { bottom: 15%; left: 20%; animation-delay: 1s; }
+        .sparkle:nth-child(4) { bottom: 25%; right: 10%; animation-delay: 1.5s; }
+
+        @keyframes sparkleFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+        }
+
+        .year-badge {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .year-text {
+            font-size: 72px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #ffd700, #ffed4e, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            animation: shimmer 2s infinite;
+            letter-spacing: 3px;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
+        }
+
+        .subtitle {
+            color: #333;
+            font-size: 18px;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        h1 {
+            color: #1a1f3a;
+            font-size: 32px;
+            text-align: center;
+            margin: 25px 0;
+            font-weight: bold;
+        }
+
+        .divider {
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #ffd700, transparent);
+            margin: 20px auto;
+        }
+
+        .details {
+            color: #444;
+            font-size: 16px;
+            line-height: 2;
+            margin: 25px 0;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+            padding: 12px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .detail-item:hover {
+            background: rgba(255, 215, 0, 0.2);
+            transform: translateX(5px);
+        }
+
+        .icon {
+            font-size: 24px;
+            margin-right: 15px;
+            min-width: 30px;
+        }
+
+        .message {
+            text-align: center;
+            color: #555;
+            font-size: 15px;
+            line-height: 1.8;
+            margin: 25px 0;
+            font-style: italic;
+        }
+
+        .rsvp-button {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: #1a1f3a;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+        }
+
+        .rsvp-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.6);
+        }
+
+        .rsvp-button:active {
+            transform: translateY(-1px);
+        }
+
+        .countdown {
+            text-align: center;
+            margin-top: 25px;
+            padding: 20px;
+            background: rgba(26, 31, 58, 0.05);
+            border-radius: 15px;
+        }
+
+        .countdown-title {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .countdown-value {
+            font-size: 28px;
+            font-weight: bold;
+            color: #1a1f3a;
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .countdown-label {
+            font-size: 11px;
+            color: #666;
+            margin-top: 5px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+
+    <div class="container">
+        <div class="sparkle">✨</div>
+        <div class="sparkle">⭐</div>
+        <div class="sparkle">✨</div>
+        <div class="sparkle">⭐</div>
+
+        <div class="year-badge">
+            <div class="year-text">2026</div>
+            <div class="subtitle">New Year Celebration</div>
+        </div>
+
+        <h1>You're Invited!</h1>
+        
+        <div class="divider"></div>
+
+        <div class="details">
+            <div class="detail-item">
+                <span class="icon">📅</span>
+                <div>
+                    <strong>Date:</strong> December 31, 2025<br>
+                    <span style="font-size: 14px; color: #666;">New Year's Eve</span>
+                </div>
+            </div>
+            
+            <div class="detail-item">
+                <span class="icon">⏰</span>
+                <div>
+                    <strong>Time:</strong> 8:00 PM onwards<br>
+                    <span style="font-size: 14px; color: #666;">Countdown at Midnight</span>
+                </div>
+            </div>
+            
+            <div class="detail-item">
+                <span class="icon">📍</span>
+                <div>
+                    <strong>Venue:</strong> The Grand Ballroom<br>
+                    <span style="font-size: 14px; color: #666;">123 Celebration Avenue</span>
+                </div>
+            </div>
+
+            <div class="detail-item">
+                <span class="icon">🎭</span>
+                <div>
+                    <strong>Dress Code:</strong> Elegant Cocktail<br>
+                    <span style="font-size: 14px; color: #666;">Sparkle & Shine</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="message">
+            Join us as we bid farewell to 2025 and welcome 2026 with joy, laughter, and unforgettable memories!
+        </div>
+
+        <div class="countdown">
+            <div class="countdown-title">Countdown to Celebration</div>
+            <div class="countdown-timer" id="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-value" id="days">00</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="hours">00</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="minutes">00</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="seconds">00</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+        </div>
+
+        <button class="rsvp-button" onclick="handleRSVP()">RSVP Now</button>
+    </div>
+
+    <script>
+        // Create stars
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = Math.random() * 3 + 'px';
+            star.style.height = star.style.width;
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Fireworks effect
+        function createFirework(x, y) {
+            const colors = ['#ffd700', '#ff6b6b', '#4ecdc4', '#45b7d1', '#f7dc6f', '#ff69b4'];
+            const firework = document.createElement('div');
+            firework.className = 'firework';
+            firework.style.left = x + 'px';
+            firework.style.top = y + 'px';
+            
+            for (let i = 0; i < 12; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'absolute';
+                particle.style.width = '4px';
+                particle.style.height = '4px';
+                particle.style.borderRadius = '50%';
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                const angle = (i * 30) * Math.PI / 180;
+                const distance = 50 + Math.random() * 50;
+                particle.style.transform = `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px)`;
+                particle.style.transition = 'all 1s ease-out';
+                
+                firework.appendChild(particle);
+            }
+            
+            document.body.appendChild(firework);
+            setTimeout(() => firework.remove(), 1500);
+        }
+
+        // Random fireworks
+        setInterval(() => {
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight * 0.7;
+            createFirework(x, y);
+        }, 2000);
+
+        // Countdown timer
+        function updateCountdown() {
+            const newYear = new Date('December 31, 2025 20:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = newYear - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = '<div style="font-size: 24px; color: #ffd700;">🎉 Happy New Year! 🎉</div>';
+            }
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // RSVP button
+        function handleRSVP() {
+            createFirework(window.innerWidth / 2, window.innerHeight / 2);
+            alert('Thank you for your RSVP! 🎉\n\nWe look forward to celebrating with you!');
+        }
+    </script>
+</body>
+</html>

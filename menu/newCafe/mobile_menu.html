@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Սրճարան, մենյու</title>
+    <link rel="icon" href="images/logo.jpg" type="image/x-icon">
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            
+        }
+
+        
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #815c3a;
+        }
+
+        header {
+            background: linear-gradient(135deg, #C2A68C 0%, #C2A68C 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .categories {
+            display: flex;
+            gap: 10px;
+            padding: 15px;
+            background-color: white;
+            border-bottom: 1px solid #e0e0e0;
+            flex-wrap: wrap;
+        }
+
+
+        .categories button {
+            padding: 8px 16px;
+            border: 2px solid #C2A68C;
+            background-color: white;
+            color: #6e5034;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .categories button.active {
+            background-color: #C2A68C;
+            color: white;
+        }
+
+        .categories button:hover {
+            background-color: #C2A68C;
+            color: white;
+        }
+
+        .menu-container {
+            padding: 15px;
+            max-width: 100%;
+        }
+
+        .category-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin: 20px 0 15px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #7b5e43;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .menu-item:active {
+            transform: scale(0.98);
+        }
+
+        .menu-item:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        .item-header {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .item-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: transform 0.2s ease;
+        }
+
+        .item-icon:hover {
+            transform: scale(1.05);
+        }
+
+        .item-info {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+
+        .item-name {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
+        .item-price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #8a5a2d;
+
+            white-space: nowrap;
+
+        }
+
+        .item-description {
+            font-size: 13px;
+            color: #999;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            white-space: normal;
+        }
+
+        .item-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.open {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 90%;
+            max-height: 90vh;
+            overflow: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .modal-image {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+        .close-btn {
+            align-self: flex-end;
+            background-color: #C2A68C;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background-color: #6d4a28;
+        }
+
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 24px;
+            }
+
+            .menu-item {
+                padding: 12px;
+                margin-bottom: 10px;
+            }
+
+            .item-name {
+                font-size: 15px;
+            }
+
+            .item-icon {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>ՄԵՆՅՈՒ</h1>
+        <p>Ձեզ՝ բարի ախորժակ ու բարի ժամանց</p>
+    </header>
+
+    <div class="categories">
+        <button class="category-btn active" data-category="all">Բոլորը</button>
+        <button class="category-btn" data-category="Խորտիկներ">Խորտիկներ</button>
+        <button class="category-btn" data-category="Ապուրներ">Ապուրներ</button>
+        <button class="category-btn" data-category="Սենդվիչներ">Սենդվիչներ</button>
+        <button class="category-btn" data-category="Աղցաններ">Աղցաններ</button>
+        <button class="category-btn" data-category="Սուրճ">Սուրճ</button>
+        <button class="category-btn" data-category="Խմիչքներ">Խմիչքներ</button>
+        <button class="category-btn" data-category="Ալկոհոլային">Ալկոհոլային</button>
+    </div>
+
+    <div class="menu-container" id="menuContainer"></div>
+
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">Փակել</button>
+            <img id="modalImage" class="modal-image" src="" alt="">
+        </div>
+    </div>
+
+
+
+   
+    <script>
+        const menuData = {
+            Խորտիկներ: [
+                {
+                    name: 'Ավոկադո-տոստ',
+                    price: '3500 ֏',
+                    description: 'խրթխրթան հրուշակային հաց՝ փափուկ ավոկադոյի քսուքով, պղպեղով ու կիտրոնով։',
+                    image: 'images/avocado.jpg'
+                },
+                {
+                    name: 'Օմլետ պանրով',
+                    price: '2800 ֏',
+                    description: 'փափուկ ձվով օմլետ՝ հալվող պանրով։',
+                    image: 'images/Cheese-omelette.jpg'
+                },
+                {
+                    name: 'Լավաշով հումուս-ռոլ',
+                    price: '2000 ֏',
+                    description: 'բարակ լավաշ՝ հումուսով, թարմ կանաչիով ու լիմոնի նոտայով։',
+                    image: 'images/lavash.jpg'
+                },
+            ],
+
+            Ապուրներ: [
+                {
+                    name: 'Հավի ապուր',
+                    price: '2500 ֏',
+                    description: 'տնային ոճի թեթև ապուր՝ հավով ու բանջարեղենով։',
+                    image: 'images/Chicken-Soup-main.jpg'
+                },
+                {
+                    name: 'Կրեմ-ապուր սնկով',
+                    price: '2900 ֏',
+                    description: 'խիտ և մետաքսանման սնկի ապուր՝ կրեմով։',
+                    image: 'images/Mushroom-Soup.jpg'
+                },
+            ],
+
+            Սենդվիչներ: [
+                {
+                    name: 'Սենդվիչ հավով',
+                    price: '3200 ֏',
+                    description: 'հավի ֆիլե, լոլիկ, վարունգ, թարմ կրպու և թեթև սոուս։',
+                    image: 'images/Grilled_Chicken_Sandwich.jpg'
+                },
+                {
+                    name: 'Թունա սենդվիչ',
+                    price: '3300 ֏',
+                    description: 'թունա, հասած լոլիկ, կանաչի, մայոնեզի նուրբ համ։',
+                    image: 'images/tuna-salad.jpg'
+                },
+            ],
+
+            Աղցաններ: [
+                {
+                    name: 'Կեսար աղցան',
+                    price: '3800 ֏',
+                    description: 'հավ, ռոմեն, պարմեզան, կրուտոններ, Կեսարի սոուս։',
+                    image: 'images/caesar-salad-recipes.jpg'
+                },
+                {
+                    name: 'Թարմ բանջարեղենային աղցան',
+                    price: '2200 ֏',
+                    description: 'լոլիկ, վարունգ, սոխ, կանաչի, ձիթապտղի յուղ։',
+                    image: 'images/vegetabe.png'
+                },
+            ],
+
+            Սուրճ: [
+                {
+                    name: 'Էսպրեսսո',
+                    price: '800 ֏',
+                    description: 'ուժեղ և խտացված սուրճ։',
+                    image: 'images/espresso.jpg'
+                },
+                {
+                    name: 'Ամերիկանո',
+                    price: '1000 ֏',
+                    description: 'թեթև և մաքուր համերով երկար սուրճ։',
+                    image: 'images/americano.jpg'
+                },
+                {
+                    name: 'Կապուչինո',
+                    price: '1500 ֏',
+                    description: 'էսպրեսսո՝ կաթի փրփուրով։',
+                    image: 'images/cappuccino.png'
+                },
+                {
+                    name: 'Լատտե',
+                    price: '1700 ֏',
+                    description: 'նուրբ, կաթային, մեղմ սուրճ։',
+                    image: 'images/Latte.jpg'
+                },
+            ],
+
+            Խմիչքներ: [
+                {
+                    name: 'Լիմոնադ տանային',
+                    price: '1800 ֏',
+                    description: 'թարմ կիտրոն, մեղր կամ շաքար, սառույց։',
+                    image: 'images/lemonade-1.jpg'
+                },
+                {
+                    name: 'Սառը սուրճ',
+                    price: '1700 ֏',
+                    description: 'սառույցով սուրճ՝ մեղմ քաղցրությամբ։',
+                    image: 'images/iced.jpg'
+                },
+            ],
+
+            Ալկոհոլային: [
+                {
+                    name: 'Գարեջուր',
+                    price: '1500 ֏',
+                    description: 'թեթև, թարմացնող՝ տեղական արտադրությամբ։',
+                    image: 'images/beer.jpg'
+                },
+                {
+                    name: 'Կարմիր գինի',
+                    price: '2500 ֏',
+                    description: 'չոր կամ կիսաչոր՝ ըստ նախընտրության։',
+                    image: 'images/wine.jpg'
+                },
+            ]
+        };
+
+
+
+        function openModal(imageSrc) {
+            document.getElementById('imageModal').classList.add('open');
+            document.getElementById('modalImage').src = imageSrc;
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').classList.remove('open');
+        }
+
+        function renderMenu(category = 'all') {
+            const container = document.getElementById('menuContainer');
+            container.innerHTML = '';
+
+            const categories = category === 'all' ? Object.keys(menuData) : [category];
+
+            categories.forEach(cat => {
+                const title = document.createElement('h2');
+                title.className = 'category-title';
+                title.textContent = cat.charAt(0).toUpperCase() + cat.slice(1);
+                container.appendChild(title);
+
+                menuData[cat].forEach(item => {
+                    const itemEl = document.createElement('div');
+                    itemEl.className = 'menu-item';
+
+                    let imageHTML = '';
+                    if (item.image) {
+                        imageHTML = `<img class="item-icon" src="${item.image}" alt="${item.name}" onclick="openModal('${item.image}')">`;
+                    } else if (item.icon) {
+                        imageHTML = `<div style="width: 60px; height: 60px; background: #667eea; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 32px; flex-shrink: 0;">☕</div>`;
+                    }
+
+                    itemEl.innerHTML = `
+                        <div class="item-header">
+                            ${imageHTML}
+                            <div class="item-info">
+                                <div class="item-name">${item.name}
+                                    
+                                    <div class="item-description">${item.description}</div>
+                                    </div>
+                                <div class="item-price">${item.price}</div>
+                            </div>
+                        </div>
+                        
+                    `;
+
+
+
+                    container.appendChild(itemEl);
+                });
+            });
+        }
+
+
+
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderMenu(btn.dataset.category);
+            });
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('imageModal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        renderMenu();
+
+
+        /* ===========================================
+   SMOOTH MODAL OPEN/CLOSE
+   =========================================== */
+
+        function openModal(imageSrc) {
+            const modal = document.getElementById('imageModal');
+            const img = document.getElementById('modalImage');
+
+            img.src = imageSrc;
+
+            modal.style.display = "flex";
+            requestAnimationFrame(() => {
+                modal.classList.add("fade-in");
+            });
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+
+            modal.classList.remove("fade-in");
+            modal.classList.add("fade-out");
+
+            setTimeout(() => {
+                modal.style.display = "none";
+                modal.classList.remove("fade-out");
+            }, 250);
+        }
+
+        /* inject modal animation CSS */
+        const modalStyle = document.createElement("style");
+        modalStyle.textContent = `
+    #imageModal {
+        opacity: 0;
+        transition: opacity .25s ease;
+    }
+    #imageModal.fade-in {
+        opacity: 1;
+    }
+    #imageModal.fade-out {
+        opacity: 0;
+    }
+`;
+        document.head.appendChild(modalStyle);
+
+
+        /* ===========================================
+           SMOOTH CATEGORY SWITCH (slide + scale)
+           =========================================== */
+
+        const menuContainer = document.getElementById("menuContainer");
+
+        /* injected CSS */
+        const smoothStyle = document.createElement("style");
+        smoothStyle.textContent = `
+    #menuContainer {
+        transition: transform .22s ease, opacity .22s ease;
+    }
+    #menuContainer.animating {
+        transform: translateY(-4px) scale(0.98);
+        opacity: 0.9; /* slight change, not fading */
+    }
+`;
+        document.head.appendChild(smoothStyle);
+
+
+        /* wrapper for your original renderMenu() */
+        function renderMenuSmooth(category) {
+            menuContainer.classList.add("animating");
+
+            setTimeout(() => {
+                renderMenu(category);   // քո renderMenu ֆունկցիան
+                menuContainer.classList.remove("animating");
+            }, 200);
+        }
+
+
+        /* override buttons to use smooth animation */
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                renderMenuSmooth(btn.dataset.category);
+            });
+        });
+
+
+
+
+        imageHTML = `
+    <img 
+        loading="lazy" 
+        class="item-icon" 
+        src="${item.image}?w=250&h=250&fit=crop" 
+        alt="${item.name}" 
+        onclick="openModal('${item.image}?w=900&fit=crop')">
+`;
+
+    </script>
+
+
+
+
+</body>
+
+</html>
