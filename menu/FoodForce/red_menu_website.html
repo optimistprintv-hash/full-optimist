@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodForce</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #c41e3a 0%, #a01729 100%);
+            color: #333;
+            width: 100%; min-height: 100vh;
+        }
+        .logo-area {
+            width: 100%; padding: 25px 20px;
+            background: rgba(255, 255, 255, 0.95);
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .restaurant-logo { width: 180px; margin: 0 auto 15px; display: flex; justify-content: center; font-size: 40px; }
+        .logo { font-size: 36px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; }
+        .tagline { font-size: 12px; color: #999; margin-top: 5px; letter-spacing: 1px; }
+
+        .category {
+            width: 100%; padding: 30px 20px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.98), rgba(255,255,255,0.95));
+            border-top: 3px solid #c41e3a;
+            border-bottom: 1px solid rgba(196, 30, 58, 0.2);
+            transition: background 0.3s ease;
+        }
+        .category:hover {
+            background: linear-gradient(to bottom, rgba(255,240,240,0.98), rgba(255,225,225,0.95));
+        }
+        .category-title { font-size: 28px; font-weight: 800; color: #c41e3a; margin-bottom: 20px; text-transform: uppercase; }
+
+        .category-image {
+            width: 100%; margin-bottom: 25px; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            position: relative; overflow: hidden;
+            box-shadow: 0 4px 15px rgba(196, 30, 58, 0.3);
+            transition: transform 0.3s ease;
+        }
+        .category-image:hover {
+            transform: scale(1.03);
+        }
+
+        .item { width: 100%; padding: 18px 0; border-bottom: 1px solid rgba(196, 30, 58, 0.15); display: flex; justify-content: space-between; }
+        .item:hover { background: rgba(196, 30, 58, 0.05); transition: 0.2s; padding-left: 10px; }
+        .item-name { font-size: 18px; font-weight: 700; }
+        .item-price { font-size: 20px; font-weight: 900; color: #c41e3a; }
+
+        .footer { width: 100%; padding: 30px 20px; background: #1a1a1a; text-align: center; border-top: 4px solid #c41e3a; color: #fff; }
+    </style>
+</head>
+<body>
+    <div class="logo-area">
+        <img class="restaurant-logo" src="images/logo.png" alt="logo">
+        <div class="logo">Food Force - menu</div>
+        <div class="tagline">ԸՆԴՄԻՋՄԱՆՆ ԱՆՊԱՅՄԱՆ ԱՐԻ՛ ՄԵԶ ՄՈՏ</div>
+    </div>
+
+    <div class="category">
+        <div class="category-title">ՖՐԻ</div>
+        <img class="category-image burgers" src="images/fries.png" alt="logo">
+        <div class="items-list">
+            <div class="item"><div class="item-name">ՖՐԻ HOT-DOG FORCE</div><div class="item-price">600 / 650 ֏</div></div>
+            <div class="item"><div class="item-name">ՖՐԻ FORCE</div><div class="item-price">600 ֏</div></div>
+            <div class="item"><div class="item-name">ՖՐԻ ԱՄԵՐԻԿՅԱՆ</div><div class="item-price">600 ֏</div></div>
+            <div class="item"><div class="item-name">ՖՐԻ ԳՅՈՒՂԱԿԱՆ</div><div class="item-price">700 ֏</div></div>
+            <div class="item"><div class="item-name">ՆԱԳԵՏՍ</div><div class="item-price">1200 ֏</div></div>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-title">Բուրգեր</div>
+        <img class="category-image burgers" src="images/burger.png" alt="logo">
+        <div class="items-list">
+            <div class="item"><div class="item-name">ԲՈՒՐԳԵՐ FORCE ՀԱՎ</div><div class="item-price">1300 / 1600֏</div></div>
+            <div class="item"><div class="item-name">ԲՈՒՐԳԵՐ FORCE ՏԱՎԱՐ</div><div class="item-price">1500 / 1800 ֏</div></div>
+            <div class="item"><div class="item-name">ԲՈՒՐԳԵՐ FORCE ՑԵԶԱՐ</div><div class="item-price">1700 ֏</div></div>
+            <div class="item"><div class="item-name">ԲՈՒՐԳԵՐ ԱՆԳՈՒՍԻ</div><div class="item-price">2600 ֏</div></div>
+        </div>
+    </div>
+
+    <div class="footer">© 2025 FoodForce — All rights reserved.</div>
+
+    <script>
+        // Mobile-friendly fade-in animation (lighter, shorter distance)
+        const isMobile = window.innerWidth < 600;
+
+        const sections = document.querySelectorAll('.category');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.15 });
+
+        sections.forEach(sec => {
+            sec.style.opacity = 0;
+            sec.style.transform = isMobile ? 'translateY(20px)' : 'translateY(40px)';
+            sec.style.transition = isMobile ? '0.35s ease' : '0.6s ease';
+            observer.observe(sec);
+        });
+
+        // Lightweight logo hover for mobile (tap-pulse instead of hover)
+        const logo = document.querySelector('.restaurant-logo');
+
+        if (isMobile) {
+            logo.addEventListener('click', () => {
+                logo.style.transform = 'scale(1.08)';
+                setTimeout(() => logo.style.transform = 'none', 180);
+            });
+        } else {
+            logo.addEventListener('mouseover', () => {
+                logo.style.transform = 'rotate(3deg) scale(1.05)';
+                logo.style.transition = '0.3s';
+            });
+            logo.addEventListener('mouseout', () => {
+                logo.style.transform = 'none';
+            });
+        }
+    </script>
+</body>
+</html>
