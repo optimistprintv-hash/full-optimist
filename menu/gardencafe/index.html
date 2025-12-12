@@ -4,12 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preload" href="/fonts/Hack-Bold.woff2" as="font" type="font/woff2" crossorigin>
-
     <title>Garden Cafe</title>
 
     <style>
-        /* ———————————  YOUR ORIGINAL CSS (UNCHANGED)  ——————————— */
+        /* ———————————  ORIGINAL CSS (UNCHANGED)  ——————————— */
         * {
             margin: 0;
             padding: 0;
@@ -22,6 +20,8 @@
             color: #f0f4f0;
             overflow-x: hidden;
             position: relative;
+            scroll-behavior: smooth;
+            /* ← ADDED */
         }
 
         .bg-leaf {
@@ -56,11 +56,11 @@
 
             0%,
             100% {
-                transform: translateY(0)rotate(0deg);
+                transform: translateY(0) rotate(0deg);
             }
 
             50% {
-                transform: translateY(-30px)rotate(5deg);
+                transform: translateY(-30px) rotate(5deg);
             }
         }
 
@@ -76,27 +76,12 @@
             letter-spacing: 8px;
             color: #fde9b6;
             text-shadow: 0 0 40px rgba(200, 230, 201, 0.3);
-            margin-bottom: 10px;
-            animation: glow 3s ease-in-out infinite;
-        }
-
-        @keyframes glow {
-
-            0%,
-            100% {
-                text-shadow: 0 0 40px rgba(200, 230, 201, 0.3);
-            }
-
-            50% {
-                text-shadow: 0 0 60px rgba(200, 230, 201, 0.5);
-            }
         }
 
         .tagline {
             font-size: 1.2rem;
             color: #fde9b6;
             letter-spacing: 4px;
-            font-family: "Hack", sans-serif;
             font-style: italic;
         }
 
@@ -119,9 +104,6 @@
             margin-bottom: 60px;
             letter-spacing: 6px;
             position: relative;
-            width: 100%;
-            font-family: "Hack", sans-serif;
-            display: inline-block;
         }
 
         .section-title::after {
@@ -143,23 +125,10 @@
         }
 
         .menu-item {
-            position: relative;
             display: flex;
             gap: 25px;
             padding: 30px 0;
             border-bottom: 1px solid rgba(129, 199, 132, 0.2);
-            transition: all 0.4s ease;
-            cursor: pointer;
-        }
-
-        .menu-item:hover {
-            transform: translateX(10px);
-            border-bottom-color: rgba(129, 199, 132, 0.5);
-        }
-
-        .menu-item:hover .item-image {
-            transform: scale(1.05);
-            box-shadow: 0 8px 30px rgba(129, 199, 132, 0.3);
         }
 
         .item-image {
@@ -168,8 +137,6 @@
             object-fit: cover;
             border-radius: 12px;
             border: 2px solid rgba(129, 199, 132, 0.3);
-            transition: all 0.4s ease;
-            flex-shrink: 0;
             cursor: zoom-in;
         }
 
@@ -183,14 +150,12 @@
         .item-header {
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
             margin-bottom: 12px;
         }
 
         .item-name {
             font-size: 1.6rem;
             color: #e8f5e9;
-            letter-spacing: 2px;
         }
 
         .item-price {
@@ -201,140 +166,43 @@
         .item-description {
             font-size: 1rem;
             color: #b9ddb9;
-            line-height: 1.6;
-        }
-
-        .special-badge {
-            display: inline-block;
-            padding: 4px 12px;
-            background: rgba(129, 199, 132, 0.2);
-            border: 1px solid #81c784;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            color: #c8e6c9;
-            margin-left: 10px;
-            letter-spacing: 1px;
         }
 
         footer {
             text-align: center;
             padding: 80px 20px 40px;
             color: #a5d6a7;
-            font-size: 0.9rem;
         }
 
-        .footer-decor {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 20px;
-            border: 2px solid #81c784;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: #c8e6c9;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            left: 0;
+        /* ————————— ADDED: Sticky navigation bar ————————— */
+        #sectionNav {
+            position: sticky;
             top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 1000;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .modal.active {
+            z-index: 999;
+            background: rgba(26, 58, 46, 0.92);
+            backdrop-filter: blur(6px);
+            padding: 12px 20px;
             display: flex;
-            align-items: center;
             justify-content: center;
+            gap: 25px;
+            border-bottom: 1px solid rgba(129, 199, 132, 0.3);
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        .modal-content {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 12px;
-            box-shadow: 0 0 50px rgba(129, 199, 132, 0.5);
-            animation: zoomIn 0.3s ease;
-        }
-
-        @keyframes zoomIn {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 30px;
-            right: 40px;
-            font-size: 3rem;
-            cursor: pointer;
-            background: rgba(26, 58, 46, 0.8);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid #81c784;
-            transition: all 0.3s ease;
+        #sectionNav button {
+            background: transparent;
+            border: 1px solid #81c784;
+            padding: 8px 18px;
+            border-radius: 20px;
             color: #c8e6c9;
+            font-size: 0.95rem;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: 0.3s;
         }
 
-        @media(max-width:768px) {
-            .menu-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .menu-item {
-                flex-direction: column;
-            }
-
-            .item-image {
-                width: 100%;
-                height: 200px;
-            }
+        #sectionNav button:hover {
+            background: rgba(129, 199, 132, 0.2);
         }
-
-        @font-face {
-            font-family: "Hack";
-            src: url("/fonts/Hack-Bold.woff2") format("woff2");
-            font-weight: 700;
-            font-style: normal;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: "Hack";
-            src: url("/fonts/Hack-Italic.woff2") format("woff2");
-            font-weight: 400;
-            font-style: italic;
-            font-display: swap;
-        }
-
-
-        /* ——————————————————————————————————————————————— */
     </style>
 </head>
 
@@ -353,7 +221,6 @@
 
     <header>
         <div class="logo">GARDEN CAFE</div>
-        
         <div class="tagline">Էսթետիկ • Նուրբ • Հյուրընկալ</div>
         <div>--------</div>
         <p>7AM - 7PM / 07:00-19:00</p>
@@ -362,7 +229,10 @@
 
     <div class="divider"></div>
 
-    <!-- —————— EMPTY MENU CONTAINER —————— -->
+    <!-- ———————————— ADDED: Section navigation bar ———————————— -->
+    <div id="sectionNav"></div>
+
+    <!-- —————— MENU —————— -->
     <div id="menuContainer"></div>
 
     <footer>
@@ -370,140 +240,132 @@
         <p style="margin-top:10px; opacity:0.7;">+374 77 40 40 51</p>
     </footer>
 
-    <!-- Modal -->
-    <div id="imageModal" class="modal">
-        <span class="close-btn" id="closeModal">&times;</span>
-        <img class="modal-content" id="modalImage">
-    </div>
 
     <script>
         /* —————————————————————————————
-                MENU DATA (EDIT HERE)
+                MENU DATA
         ————————————————————————————— */
-
         const menuData = [
             {
-                title: "Coffee / Սուրճ",
+                title: "Պիցցա / Pizza",
                 items: [
-                    {
-                        name: "Cappuccino / Կապուչինո",
-                        price: "600֏",
-                        desc: "Espresso with milk / Էսպրեսսո կաթով",
-                        img: "./images/cappuccino.webp"
-                    },
-                    {
-                        name: "Latte / Լատտե",
-                        price: "700֏",
-                        desc: "Milk & Espresso / Կաթ և Էսպրեսսո",
-                        img: "./images/Latte.webp"
-                    },
-                    {
-                        name: "Espresso / Էսպրեսսո",
-                        price: "500֏",
-                        desc: "Hot water & coffee beans / Տաք ջուր և սուրճի հատիկներ",
-                        img: "./images/espresso.webp"
-                    }
+                    { name: "Մոցարելլա / Mozzarella", price: "2200֏", desc: "Մոցարելլա լոլիկի ֆիրմային սոուս, իտալական խորացրած կանաչեղեն / Mozzarella, signature tomato sauce, dried Italian herbs", img: "./images/2.webp" },
+                    { name: "4 պանիր / 4 cheese", price: "2300֏", desc: "Մոցարելլա, խանրային խառնուրդ և պարմեզան, ֆիրմային սոուս / Mozzarella, cheese mix and parmesan, signature sauce", img: "./images/1.webp" },
+                    { name: "Խանրով և խոզապուխտով / With cheese and ham", price: "2500֏", desc: "Խոզապուխտ, մոցարելլա ալֆրեդո սոուս / Ham, mozzarella, Alfredo sauce", img: "./images/3.webp" },
+                    { name: "Իտալական / Italian", price: "2700֏", desc: "Լոլիկի ֆիրմային սոուս, պեպպերոնի, ձիթապտուղ, շամպինիոն, մոցարելլա, իտալական չորացրած կանաչեղեն / Signature tomato sauce, pepperoni, olives, champignon, mozzarella, dried Italian herbs", img: "./images/4.webp" },
+                    { name: "Հավայան անանասով / Hawaiian with pineapple", price: "2700֏", desc: "Արքայախնձոր, մոցարելլա, ֆիրմային սոուս, ճուտիկ / Pineapple, mozzarella, signature sauce, chicken", img: "./images/6.webp" },
+                    { name: "Պեպպերոնի / Pepperoni", price: "2800֏", desc: "Պեպպերոնիմ շաա՜տ մոցարելլա, լոլիկի սոուս / Pepperoni, lots of mozzarella, tomato sauce", img: "./images/5.webp" },
+                    { name: "Դիաբլո / Diablo", price: "2900֏", desc: "Կծու պղպեղ, բարբեքյու սոուս, լոլիկ, քաղցր պղպեղ, կարմիր սոխ, մոցարելլա, հավի միս, ֆիրմային սոուս / Hot pepper, BBQ sauce, tomato, sweet pepper, red onion, mozzarella, chicken meat, signature sauce", img: "./images/8.webp" },
+                    { name: "Սնկով և բանջարեղենով / With mushrooms and vegetables", price: "3000֏", desc: "Շամպինիոն, լոլիկ, ձիթապտուղ, քաղցր պղպեղ, կարմիր սոխ, մոցարելլա, ֆիրմային սոուս / Champignon, tomato, olives, sweet pepper, red onion, mozzarella, signature sauce", img: "./images/7.webp" },
+                    { name: "Գարդեն միքս / Garden Mix", price: "3200֏", desc: "Շամպինիոն, լոլիկ, ձիթապտուղ, քաղցր պղպեղ, կարմիր սոխ, մոցարելլա, ֆիրմային սոուս։ Կծու պղպեղ, բարբեքյու սոուս, լոլիկ, քաղցր պղպեղ, կարմիր սոխ, մոցարելլա, հավի միս, ֆիրմային սոուս / Champignon, tomato, olives, sweet pepper, red onion, mozzarella, signature sauce. Hot pepper, BBQ sauce, tomato, sweet pepper, red onion, mozzarella, chicken meat, signature sauce", img: "./images/.webp" }
                 ]
             },
-
             {
-                title: "Hot dishes / Տաք ուտեստներ",
+                title: "Տաք ուտեստներ / Hot dishes",
                 items: [
-                    {
-                        name: "Qabab 1kg/ Տավարի քաբաբ 1կգ",
-                        price: "1000֏",
-                        desc: "Roasted meat / Տավարի խորոված միս",
-                        img : "./images/qabab.webp"
-                    }
+                    { name: "Խինկալի վրացական 1հ / Georgian Khinkali 1pc", price: "250֏", desc: "--", img: "./images/30.webp" },
+                    { name: "Լահմաջո / Lahmajun", price: "300֏", desc: "--", img: "./images/9.webp" },
+                    { name: "Լահմաջո պանրով / Lahmajun with cheese", price: "450֏", desc: "--", img: "./images/10.webp" },
+                    { name: "Շաուրմա հավի փոքր / Chicken Shawarma Small", price: "600֏", desc: "--", img: "./images/16.webp" },
+                    { name: "Շաուրմա խոզի փոքր / Pork Shawarma Small", price: "700֏", desc: "--", img: "./images/17.webp" },
+                    { name: "Շաուրմա հավի մեծ / Chicken Shawarma Large", price: "1000֏", desc: "--", img: "./images/16.webp" },
+                    { name: "Շաուրմա խոզի մեծ / Pork Shawarma Large", price: "1100֏", desc: "--", img: "./images/17.webp" },
+                    { name: "Աջարական խաչապուրի / Adjarian Khachapuri", price: "750֏", desc: "--", img: "./images/20.webp" },
+                    { name: "Կարտոֆիլ ֆրի / French Fries", price: "600֏", desc: "--", img: "./images/14.webp" },
+                    { name: "Կարտոֆիլ գյուղական / Country Style Potatoes", price: "700֏", desc: "--", img: "./images/13.webp" },
+                    { name: "Նագեթս / Nuggets", price: "850֏", desc: "--", img: "./images/19.webp" },
+                    { name: "Խոզի մատ բարբեքյու 1կգ / Pork Ribs BBQ 1kg", price: "1000֏", desc: "--", img: "./images/27.webp" },
+                    { name: "Քաբաբ տավարի / Beef Kebab", price: "1000֏", desc: "--", img: "./images/38.webp" },
+                    { name: "Բուրգեր տավարի / Beef Burger", price: "1500֏", desc: "--", img: "./images/18.webp" },
+                    { name: "Մեքսիկական տակո 3հ / Mexican Tacos 3 pcs", price: "1500֏", desc: "--", img: "./images/11.webp" },
+                    { name: "ճուտ կարտոֆիկ / Chicken with potatoes", price: "2400֏", desc: "--", img: "./images/39.webp" },
+                    { name: "Մերգելական խաչապուրի / Megrelian Khachapuri", price: "2500֏", desc: "--", img: "./images/13.webp" },
+                    { name: "Խոզի խորոված 1կգ / Pork Barbecue 1kg", price: "5500֏", desc: "--", img: "./images/.webp" },
+                    { name: "Խորոված հավի թև 1կգ / Grilled Chicken Wings 1kg", price: "3000֏", desc: "--", img: "./images/28.webp" },
+                    { name: "Հավի տատապա / Chicken Tapaka", price: "3300֏", desc: "--", img: "./images/29.webp" },
+                    { name: "Իշխան խորոված 1կգ / Grilled Trout 1kg", price: "6000֏", desc: "--", img: "./images/37.webp" },
+                    { name: "Հավի թևիկներ 4 հատ / Chicken wings 4 pcs", price: "--", desc: "--", img: "./images/15.webp" }
+                    
+                ]
+            },
+            {
+                title: "Աղցան / Salad",
+                items: [
+                    { name: "Ամառային / Summer", price: "600֏", desc: "--", img: "./images/.webp" },
+                    { name: "Կեսար / Caesar", price: "700֏", desc: "--", img: "./images/22.webp" },
+                    { name: "Ֆունչոզա / Funchoza", price: "750֏", desc: "--", img: "./images/23.webp" },
+                    { name: "Հունական / Greek", price: "800֏", desc: "--", img: "./images/24.webp" },
+                    { name: "Քամած մածուն անանասով / Strained Matsoon with pineapple", price: "850֏", desc: "--", img: "./images/25.webp" },
+                    { name: "Հաց, լավաշ / Bread, Lavash", price: "550֏", desc: "--", img: "./images/35.webp" },
+                    { name: "Պանրի ասորտի / Cheese Platter", price: "1000֏", desc: "--", img: "./images/36.webp" },
+                    
+                ]
+            },
+            {
+                title: "Ըմպելիքներ / Drinks",
+                items: [
+                    { name: "Թան / Tan", price: "1000֏", desc: "--", img: "./images/34.webp" }
+                ]
+            },
+            {
+                title: "Սուրճ / Coffee",
+                items: [
+                    { name: "Լատտե / Latte", price: "550֏", desc: "--", img: "./images/33.webp" },
+                    { name: "Կապուչինո / Cappuccino", price: "600֏", desc: "--", img: "./images/32.webp" },
+                    { name: "Թեյ / Tea", price: "350֏", desc: "--", img: "./images/31.webp" }
+                ]
+            },
+            {
+                title: "Աղանդեր / Dessert",
+                items: [
+                    { name: "Պաղպաղակ / Ice Cream", price: "400֏", desc: "--", img: "./images/49.webp" },
+                    { name: "Էկեր / Eclair", price: "450֏", desc: "--", img: "./images/44.webp" },
+                    { name: "Կրասնի բարխետ / Red Velvet", price: "500֏", desc: "--", img: "./images/45.webp" },
+                    { name: "Մանդարինով / With Tangerine", price: "500֏", desc: "--", img: "./images/46.webp" },
+                    { name: "Իրիսկա / Toffee", price: "500֏", desc: "--", img: "./images/47.webp" },
+                    { name: "Ֆանտազյա / Fantasy", price: "500֏", desc: "--", img: "./images/48.webp" },
+                    { name: "Վաֆլի Վենսկայա / Viennese Waffles", price: "650֏", desc: "--", img: "./images/40.webp" },
+                    { name: "Վաֆլի Վենսկայա պաղպաղակով / Viennese Waffles with ice cream", price: "750֏", desc: "--", img: "./images/41.webp" },
+                    { name: "Վաֆլի գանգոնսկի / Hong Kong Waffles", price: "1000֏", desc: "--", img: "./images/42.webp" },
+                    { name: "Նապոլեոն / Napoleon", price: "1000֏", desc: "--", img: "./images/43.webp" }
                 ]
             }
         ];
 
+        /* ———————————— GENERATE NAVIGATION BUTTONS ———————————— */
+        const nav = document.getElementById("sectionNav");
+        nav.innerHTML = menuData.map((s, i) =>
+            `<button onclick="document.getElementById('section_${i}').scrollIntoView({behavior:'smooth'})">
+                ${s.title}
+            </button>`
+        ).join("");
 
-        /* —————————————————————————————
-               GENERATE MENU FROM DATA
-        ————————————————————————————— */
-
+        /* ———————————— GENERATE MENU SECTIONS ———————————— */
         const container = document.getElementById("menuContainer");
 
-        menuData.forEach(section => {
+        menuData.forEach((section, i) => {
             const html = `
-    <section class="menu-section">
-        <h2 class="section-title">${section.title}</h2>
-        <div class="menu-grid">
-            ${section.items.map(item => `
-                <div class="menu-item">
-                    <img src="${item.img}" class="item-image">
-                    <div class="item-content">
-                        <div class="item-header">
-                            <span class="item-name">${item.name}
-                                ${item.badge ? `<span class="special-badge">${item.badge}</span>` : ""}
-                            </span>
-                            <span class="item-price">${item.price}</span>
-                        </div>
-                        <div class="item-description">${item.desc}</div>
+                <section class="menu-section" id="section_${i}">
+                    <h2 class="section-title">${section.title}</h2>
+                    <div class="menu-grid">
+                        ${section.items.map(item => `
+                            <div class="menu-item">
+                                <img src="${item.img}" class="item-image">
+                                <div class="item-content">
+                                    <div class="item-header">
+                                        <span class="item-name">${item.name}</span>
+                                        <span class="item-price">${item.price}</span>
+                                    </div>
+                                    <div class="item-description">${item.desc}</div>
+                                </div>
+                            </div>
+                        `).join("")}
                     </div>
-                </div>
-            `).join("")}
-        </div>
-    </section>
-    <div class="divider"></div>
-    `;
+                </section>
+                <div class="divider"></div>
+            `;
             container.insertAdjacentHTML("beforeend", html);
         });
-
-
-        /* —————————————————————————————
-                  IMAGE MODAL LOGIC
-        ————————————————————————————— */
-
-        const modal = document.getElementById('imageModal');
-        const modalImg = document.getElementById('modalImage');
-        const closeBtn = document.getElementById('closeModal');
-
-        document.addEventListener('click', e => {
-            if (e.target.classList.contains('item-image')) {
-                modal.classList.add('active');
-                modalImg.src = e.target.src;
-                document.body.style.overflow = 'hidden';
-            }
-        });
-
-        closeBtn.onclick = () => {
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        };
-
-        modal.onclick = e => {
-            if (e.target === modal) {
-                modal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        };
-
-
-        /* —————————————————————————————
-               SMOOTH ANIMATION OBSERVER
-        ————————————————————————————— */
-
-        const menuItems = document.querySelectorAll('.menu-item');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '0';
-                    entry.target.style.transform = 'translateY(20px)';
-                    setTimeout(() => {
-                        entry.target.style.transition = 'all 0.6s ease';
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, 100);
-                }
-            });
-        });
-
-        setTimeout(() => {
-            document.querySelectorAll('.menu-item').forEach(item => observer.observe(item));
-        }, 200);
 
     </script>
 
