@@ -7,7 +7,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '.', '');
   
   return {
-    base: '/full-optimist/',   // ԱՅՍՏԵՂ Է ԱՄԲՈՂՋ ԽՆԴԻՐԸ
+    base: './',
 
     server: {
       port: 3000,
