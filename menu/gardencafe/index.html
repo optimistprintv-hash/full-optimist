@@ -248,87 +248,102 @@
         ————————————————————————————— */
         const menuData = [
             {
-                title: "Պիցցա / Pizza",
+                title: "Պիցցա 35sm (8 կտոր) / Pizza 35sm (8 pieces)",
                 items: [
-                    { name: "Մոցարելլա / Mozzarella", price: "2200֏", desc: "Մոցարելլա լոլիկի ֆիրմային սոուս, իտալական խորացրած կանաչեղեն / Mozzarella, signature tomato sauce, dried Italian herbs", img: "./images/2.webp" },
-                    { name: "4 պանիր / 4 cheese", price: "2300֏", desc: "Մոցարելլա, խանրային խառնուրդ և պարմեզան, ֆիրմային սոուս / Mozzarella, cheese mix and parmesan, signature sauce", img: "./images/1.webp" },
-                    { name: "Խանրով և խոզապուխտով / With cheese and ham", price: "2500֏", desc: "Խոզապուխտ, մոցարելլա ալֆրեդո սոուս / Ham, mozzarella, Alfredo sauce", img: "./images/3.webp" },
-                    { name: "Իտալական / Italian", price: "2700֏", desc: "Լոլիկի ֆիրմային սոուս, պեպպերոնի, ձիթապտուղ, շամպինիոն, մոցարելլա, իտալական չորացրած կանաչեղեն / Signature tomato sauce, pepperoni, olives, champignon, mozzarella, dried Italian herbs", img: "./images/4.webp" },
-                    { name: "Հավայան անանասով / Hawaiian with pineapple", price: "2700֏", desc: "Արքայախնձոր, մոցարելլա, ֆիրմային սոուս, ճուտիկ / Pineapple, mozzarella, signature sauce, chicken", img: "./images/6.webp" },
-                    { name: "Պեպպերոնի / Pepperoni", price: "2800֏", desc: "Պեպպերոնիմ շաա՜տ մոցարելլա, լոլիկի սոուս / Pepperoni, lots of mozzarella, tomato sauce", img: "./images/5.webp" },
-                    { name: "Դիաբլո / Diablo", price: "2900֏", desc: "Կծու պղպեղ, բարբեքյու սոուս, լոլիկ, քաղցր պղպեղ, կարմիր սոխ, մոցարելլա, հավի միս, ֆիրմային սոուս / Hot pepper, BBQ sauce, tomato, sweet pepper, red onion, mozzarella, chicken meat, signature sauce", img: "./images/8.webp" },
-                    { name: "Սնկով և բանջարեղենով / With mushrooms and vegetables", price: "3000֏", desc: "Շամպինիոն, լոլիկ, ձիթապտուղ, քաղցր պղպեղ, կարմիր սոխ, մոցարելլա, ֆիրմային սոուս / Champignon, tomato, olives, sweet pepper, red onion, mozzarella, signature sauce", img: "./images/7.webp" },
-                    { name: "Գարդեն միքս / Garden Mix", price: "3200֏", desc: "Շամպինիոն, լոլիկ, ձիթապտուղ, քաղցր պղպեղ, կարմիր սոխ, մոցարելլա, ֆիրմային սոուս։ Կծու պղպեղ, բարբեքյու սոուս, լոլիկ, քաղցր պղպեղ, կարմիր սոխ, մոցարելլա, հավի միս, ֆիրմային սոուս / Champignon, tomato, olives, sweet pepper, red onion, mozzarella, signature sauce. Hot pepper, BBQ sauce, tomato, sweet pepper, red onion, mozzarella, chicken meat, signature sauce", img: "./images/.webp" }
+                    { name: "Մարգարիտա (8 կտոր) / Margherita (8 pieces)", price: "2200֏", desc: "Մոցարելլա լոլիկի ֆիրմային սոուս, իտալական խորացրած կանաչեղեն / Mozzarella, signature tomato sauce, dried Italian herbs", img: "./images/2.webp" },
+                    { name: "4 պանիր (8 կտոր) / 4 cheese (8 pieces)", price: "2300֏", desc: "Մոցարելլա, խանրային խառնուրդ և պարմեզան, ֆիրմային սոուս / Mozzarella, cheese mix and parmesan, signature sauce", img: "./images/1.webp" },
+                    { name: "Պանրով և խոզապուխտով (8 կտոր) / With cheese and ham (8 pieces)", price: "2600֏", desc: "Խոզապուխտ, մոցարելլա ֆիրմային սոուս / Ham, mozzarella, signature sauce", img: "./images/3.webp" },
+                    { name: "Իտալական (8 կտոր) / Italian (8 pieces)", price: "2700֏", desc: "Լոլիկի ֆիրմային սոուս, պեպպերոնի, ձիթապտուղ, շամպինիոն, մոցարելլա, իտալական չորացրած կանաչեղեն / Signature tomato sauce, pepperoni, olives, champignon, mozzarella, dried Italian herbs", img: "./images/4.webp" },
+                    { name: "Հավայան անանասով (8 կտոր) / Hawaiian with pineapple (8 pieces)", price: "2700֏", desc: "Արքայախնձոր, մոցարելլա, ֆիրմային սոուս, հավի միս / Pineapple, mozzarella, signature sauce, chicken", img: "./images/6.webp" },
+                    { name: "Պեպպերոնի (8 կտոր) / Pepperoni (8 pieces)", price: "2700֏", desc: "Պեպպերոնիմ շաա՜տ մոցարելլա, լոլիկի սոուս / Pepperoni, lots of mozzarella, tomato sauce", img: "./images/5.webp" },
+                    { name: "Դիաբլո (8 կտոր) / Diablo (8 pieces)", price: "2800֏", desc: "Կծու պղպեղ, բարբեքյու սոուս, լոլիկ, քաղցր պղպեղ, կարմիր սոխ, մոցարելլա, հավի միս, ֆիրմային սոուս / Hot pepper, BBQ sauce, tomato, sweet pepper, red onion, mozzarella, chicken meat, signature sauce", img: "./images/8.webp" },
+                    { name: "Սնկով և բանջարեղենով (8 կտոր) / With mushrooms and vegetables (8 pieces)", price: "3000֏", desc: "Շամպինիոն, լոլիկ, ձիթապտուղ, քաղցր պղպեղ, կարմիր սոխ, մոցարելլա, ֆիրմային սոուս / Champignon, tomato, olives, sweet pepper, red onion, mozzarella, signature sauce", img: "./images/7.webp" },
+                    { name: "Սնկով և խոզապուխտով (8 կտոր) / Mushroom and Ham (8 pieces)", price: "2800֏", desc: "Խոզապուխտ, մոցարելլա, շամպինյան, ֆիրմային սոուս/ Ham, mozzarella, champignons (mushrooms), signature sauce", img: "./images/61.webp" },
+                    { name: "Գարդեն միքս (8 կտոր) / Garden Mix (8 pieces)", price: "3200֏", desc: "Շամպինիոն, լոլիկ, ձիթապտուղ, քաղցր պղպեղ, կարմիր սոխ, մոցարելլա, ֆիրմային սոուս։ Կծու պղպեղ, բարբեքյու սոուս, լոլիկ, քաղցր պղպեղ, կարմիր սոխ, մոցարելլա, հավի միս, ֆիրմային սոուս / Champignon, tomato, olives, sweet pepper, red onion, mozzarella, signature sauce. Hot pepper, BBQ sauce, tomato, sweet pepper, red onion, mozzarella, chicken meat, signature sauce", img: "./images/62.webp" },
+                    { name: "Փոքր պիցցա (8 կտոր) / Mini pizza (8 pieces)", price: "2700֏", desc: "Պեպպերոնիմ շաա՜տ մոցարելլա, լոլիկի սոուս / Pepperoni, lots of mozzarella, tomato sauce", img: "./images/5.webp" },
+                ]
+            },
+            {
+                title: "Արագ սնունդ / Fast Food",
+                items: [
+                    { name: "Լահմաջո XL / Lahmacun XL", price: "300֏", desc: "--", img: "./images/9.webp" },
+                    { name: "Լահմաջո պանրով XL / Lahmacun with cheese XL", price: "450֏", desc: "--", img: "./images/10.webp" },
+                    { name: "Աջարական խաչապուրի / Adjarian Khachapuri", price: "750֏", desc: "--", img: "./images/20.webp" },
+                    { name: "Նագեթս / Nuggets", price: "850֏", desc: "--", img: "./images/19.webp" },
+                    { name: "Բուրգեր տավարի / Beef Burger", price: "1500֏", desc: "--", img: "./images/18.webp" },
+                    { name: "Շաուրմա հավի փոքր / Chicken Shawarma Small", price: "600֏", desc: "--", img: "./images/16.webp" },
+                    { name: "Շաուրմա խոզի փոքր / Pork Shawarma Small", price: "700֏", desc: "--", img: "./images/17.webp" },
+                    { name: "Շաուրմա հավի մեծ / Chicken Shawarma Large", price: "1000֏", desc: "--", img: "./images/16.webp" },
+                    { name: "Շաուրմա խոզի մեծ / Pork Shawarma Large", price: "1100֏", desc: "--", img: "./images/17.webp" },
+                    { name: "Հոթ-դոգ ֆրի / Hot Dog with Fries", price: "600֏", desc: "--", img: "./images/55.webp" },
+                    { name: "Հավի թևիկներ 4 հատ / Chicken Wings 4pcs", price: "1000֏", desc: "--", img: "./images/56.webp" },
+                    { name: "Կարտոֆիլ ֆրի / French Fries", price: "600֏", desc: "--", img: "./images/14.webp" },
+                    { name: "Կարտոֆիլ գյուղական / Country Style Potatoes", price: "700֏", desc: "--", img: "./images/13.webp" },
+                    { name: "Մեգրելական խաչապուրի / Megrelian Khachapuri", price: "2500֏", desc: "--", img: "./images/12.webp" },
+                    { name: "Մեքսիկական տակո 3հ / Mexican Tacos 3 pcs", price: "1500֏", desc: "--", img: "./images/11.webp" },
+                                    
                 ]
             },
             {
                 title: "Տաք ուտեստներ / Hot dishes",
                 items: [
                     { name: "Խինկալի վրացական 1հ / Georgian Khinkali 1pc", price: "250֏", desc: "--", img: "./images/30.webp" },
-                    { name: "Լահմաջո / Lahmajun", price: "300֏", desc: "--", img: "./images/9.webp" },
-                    { name: "Լահմաջո պանրով / Lahmajun with cheese", price: "450֏", desc: "--", img: "./images/10.webp" },
-                    { name: "Շաուրմա հավի փոքր / Chicken Shawarma Small", price: "600֏", desc: "--", img: "./images/16.webp" },
-                    { name: "Շաուրմա խոզի փոքր / Pork Shawarma Small", price: "700֏", desc: "--", img: "./images/17.webp" },
-                    { name: "Շաուրմա հավի մեծ / Chicken Shawarma Large", price: "1000֏", desc: "--", img: "./images/16.webp" },
-                    { name: "Շաուրմա խոզի մեծ / Pork Shawarma Large", price: "1100֏", desc: "--", img: "./images/17.webp" },
-                    { name: "Աջարական խաչապուրի / Adjarian Khachapuri", price: "750֏", desc: "--", img: "./images/20.webp" },
-                    { name: "Կարտոֆիլ ֆրի / French Fries", price: "600֏", desc: "--", img: "./images/14.webp" },
-                    { name: "Կարտոֆիլ գյուղական / Country Style Potatoes", price: "700֏", desc: "--", img: "./images/13.webp" },
-                    { name: "Նագեթս / Nuggets", price: "850֏", desc: "--", img: "./images/19.webp" },
-                    { name: "Խոզի մատ բարբեքյու 1կգ / Pork Ribs BBQ 1kg", price: "1000֏", desc: "--", img: "./images/27.webp" },
+                    { name: "Խոզի մատ բարբեքյու 1կգ / Pork Ribs BBQ 1kg", price: "5000֏", desc: "--", img: "./images/27.webp" },
                     { name: "Քաբաբ տավարի / Beef Kebab", price: "1000֏", desc: "--", img: "./images/38.webp" },
-                    { name: "Բուրգեր տավարի / Beef Burger", price: "1500֏", desc: "--", img: "./images/18.webp" },
-                    { name: "Մեքսիկական տակո 3հ / Mexican Tacos 3 pcs", price: "1500֏", desc: "--", img: "./images/11.webp" },
-                    { name: "ճուտ կարտոֆիկ / Chicken with potatoes", price: "2400֏", desc: "--", img: "./images/39.webp" },
-                    { name: "Մերգելական խաչապուրի / Megrelian Khachapuri", price: "2500֏", desc: "--", img: "./images/13.webp" },
-                    { name: "Խոզի խորոված 1կգ / Pork Barbecue 1kg", price: "5500֏", desc: "--", img: "./images/.webp" },
+                    { name: "Քաբաբ հավի 1հատ / Chicken Kebab 1pcs", price: "1000֏", desc: "--", img: "./images/63.webp" },
+                    { name: "ճուտ կարտոֆիլ / Chicken with potatoes", price: "2400֏", desc: "--", img: "./images/39.webp" },
+                    { name: "Խոզի խորոված 1կգ / Pork Barbecue 1kg", price: "5500֏", desc: "--", img: "./images/54.webp" },
                     { name: "Խորոված հավի թև 1կգ / Grilled Chicken Wings 1kg", price: "3000֏", desc: "--", img: "./images/28.webp" },
                     { name: "Հավի տատապա / Chicken Tapaka", price: "3300֏", desc: "--", img: "./images/29.webp" },
-                    { name: "Իշխան խորոված 1կգ / Grilled Trout 1kg", price: "6000֏", desc: "--", img: "./images/37.webp" },
-                    { name: "Հավի թևիկներ 4 հատ / Chicken wings 4 pcs", price: "--", desc: "--", img: "./images/15.webp" }
-                    
+                    { name: "Իշխան խորոված 1կգ / Grilled Trout 1kg", price: "6000֏", desc: "--", img: "./images/37.webp" }    
                 ]
             },
             {
                 title: "Աղցան / Salad",
                 items: [
-                    { name: "Ամառային / Summer", price: "600֏", desc: "--", img: "./images/.webp" },
+                    { name: "Ամառային / Summer", price: "600֏", desc: "--", img: "./images/59.webp" },
                     { name: "Կեսար / Caesar", price: "700֏", desc: "--", img: "./images/22.webp" },
                     { name: "Ֆունչոզա / Funchoza", price: "750֏", desc: "--", img: "./images/23.webp" },
                     { name: "Հունական / Greek", price: "800֏", desc: "--", img: "./images/24.webp" },
                     { name: "Քամած մածուն անանասով / Strained Matsoon with pineapple", price: "850֏", desc: "--", img: "./images/25.webp" },
                     { name: "Հաց, լավաշ / Bread, Lavash", price: "550֏", desc: "--", img: "./images/35.webp" },
-                    { name: "Պանրի ասորտի / Cheese Platter", price: "1000֏", desc: "--", img: "./images/36.webp" },
-                    
+                    { name: "Պանրի ասորտի / Cheese Pl040atter", price: "1000֏", desc: "--", img: "./images/36.webp" },
+                    { name: "Սոուս / Sauce", price: "100֏", desc: "--", img: "./images/57.webp" },
+                    { name: "Պանրային սոուս / Cheese sauce", price: "150֏", desc: "--", img: "./images/58.webp" }
                 ]
             },
             {
                 title: "Ըմպելիքներ / Drinks",
                 items: [
-                    { name: "Թան / Tan", price: "1000֏", desc: "--", img: "./images/34.webp" }
+                    { name: "Թան / Tan", price: "250֏", desc: "--", img: "./images/34.webp" }
                 ]
             },
             {
                 title: "Սուրճ / Coffee",
                 items: [
+                    { name: "Սև սուրճ / Black Coffee", price: "200֏", desc: "--", img: "./images/51.webp" },
+                    { name: "Էսպրեսսո / Espresso", price: "400֏", desc: "--", img: "./images/50.webp" },
+                    { name: "Տաք Շոկոլադ / Hot Chocolate", price: "500֏", desc: "--", img: "./images/52.webp" },
+                    { name: "Լուծվող սուրճ / Instant Coffee", price: "500֏", desc: "--", img: "./images/53.webp" },
                     { name: "Լատտե / Latte", price: "550֏", desc: "--", img: "./images/33.webp" },
                     { name: "Կապուչինո / Cappuccino", price: "600֏", desc: "--", img: "./images/32.webp" },
-                    { name: "Թեյ / Tea", price: "350֏", desc: "--", img: "./images/31.webp" }
+                    { name: "Մակիատո / Machiato", price: "600֏", desc: "--", img: "./images/60.webp" },
+                    { name: "Թեյ (Մրգային թեյ, կանաչ թեյ, սև թեյ, կարկադե) / Tea (Fruit tea, green tea, black tea, hibiscus)", price: "350֏", desc: "--", img: "./images/31.webp" }
                 ]
             },
             {
                 title: "Աղանդեր / Dessert",
                 items: [
                     { name: "Պաղպաղակ / Ice Cream", price: "400֏", desc: "--", img: "./images/49.webp" },
-                    { name: "Էկեր / Eclair", price: "450֏", desc: "--", img: "./images/44.webp" },
-                    { name: "Կրասնի բարխետ / Red Velvet", price: "500֏", desc: "--", img: "./images/45.webp" },
-                    { name: "Մանդարինով / With Tangerine", price: "500֏", desc: "--", img: "./images/46.webp" },
-                    { name: "Իրիսկա / Toffee", price: "500֏", desc: "--", img: "./images/47.webp" },
-                    { name: "Ֆանտազյա / Fantasy", price: "500֏", desc: "--", img: "./images/48.webp" },
+                    { name: "Էկլեր / Eclair", price: "400֏", desc: "--", img: "./images/44.webp" },
+                    { name: "Կրասնի բարխետ / Red Velvet", price: "450֏", desc: "--", img: "./images/45.webp" },
+                    { name: "Մանդարինով / With Tangerine", price: "450֏", desc: "--", img: "./images/46.webp" },
+                    { name: "Իրիսկա / Toffee", price: "450֏", desc: "--", img: "./images/47.webp" },
+                    { name: "Ֆանտազյա / Fantasy", price: "450֏", desc: "--", img: "./images/48.webp" },
                     { name: "Վաֆլի Վենսկայա / Viennese Waffles", price: "650֏", desc: "--", img: "./images/40.webp" },
                     { name: "Վաֆլի Վենսկայա պաղպաղակով / Viennese Waffles with ice cream", price: "750֏", desc: "--", img: "./images/41.webp" },
                     { name: "Վաֆլի գանգոնսկի / Hong Kong Waffles", price: "1000֏", desc: "--", img: "./images/42.webp" },
-                    { name: "Նապոլեոն / Napoleon", price: "1000֏", desc: "--", img: "./images/43.webp" }
+                    { name: "Նապոլեոն / Napoleon", price: "450", desc: "--", img: "./images/43.webp" }
                 ]
             }
         ];
