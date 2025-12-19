@@ -24,6 +24,9 @@
             /* ← ADDED */
         }
 
+
+
+        
         .bg-leaf {
             position: fixed;
             opacity: 0.03;
@@ -69,6 +72,10 @@
             padding: 80px 20px 60px;
             position: relative;
         }
+
+.link{
+    color: #d1cfca;
+}
 
         .logo {
             font-size: 4.5rem;
@@ -138,6 +145,7 @@
             border-radius: 12px;
             border: 2px solid rgba(129, 199, 132, 0.3);
             cursor: zoom-in;
+            max-width: 100%;
         }
 
         .item-content {
@@ -152,6 +160,8 @@
             justify-content: space-between;
             margin-bottom: 12px;
         }
+
+        
 
         .item-name {
             font-size: 1.6rem;
@@ -204,6 +214,23 @@
         #sectionNav button:hover {
             background: rgba(129, 199, 132, 0.2);
         }
+
+/* —— NAV COMPACT MODE —— */
+#sectionNav {
+    transition: padding 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+}
+
+#sectionNav.compact {
+    padding: 4px 10px;
+}
+
+#sectionNav.compact button {
+    padding: 4px 10px;
+    font-size: 0.75rem;
+}
+
+
+
     </style>
 </head>
 
@@ -224,8 +251,11 @@
         <div class="logo">GARDEN CAFE</div>
         <div class="tagline">Էսթետիկ • Նուրբ • Հյուրընկալ</div>
         <div>--------</div>
-        <p>7AM - 7PM / 07:00-19:00</p>
-        <p style="margin-top:10px; opacity:0.7;">Հասցե • Հեռախոս</p>
+        <p>Աշխատանքային ժամերը՝ 11։00-21։00</p>
+        <p style="margin-top:10px; opacity:0.7;">ք․ Տաշիր, Երևանյան 239 • +374 77 436 736</p>
+        <p>--------</p>
+        <a style="margin-top:10px; opacity:0.7;" href="https://www.facebook.com/share/1D239HHZQc/?mibextid=wwXIfr" class="link">Facebook</a>
+        <a style="margin-top:10px; opacity:0.7;" href="https://www.instagram.com/garden_tashir?igsh=amR2YjgwcTZkbjdt" class="link">Instagram</a>
     </header>
 
     <div class="divider"></div>
@@ -242,7 +272,7 @@
     </footer>
 
 
-    <script>
+    <script> 
         /* —————————————————————————————
                 MENU DATA
         ————————————————————————————— */
@@ -382,6 +412,39 @@
             `;
             container.insertAdjacentHTML("beforeend", html);
         });
+
+
+
+    const navBar = document.getElementById("sectionNav");
+
+    let lastScroll = window.pageYOffset;
+    let isCompact = false;
+    const DELTA = 15;      // շարժման նվազագույն շեմ
+    const START = 120;    // որից հետո միայն սկսի աշխատել
+
+    window.addEventListener("scroll", () => {
+        const current = window.pageYOffset;
+        const diff = current - lastScroll;
+
+        // աննշան շարժումները անտեսում ենք
+        if (Math.abs(diff) < DELTA) return;
+
+        // scroll DOWN
+        if (diff > 0 && current > START && !isCompact) {
+            navBar.classList.add("compact");
+            isCompact = true;
+        }
+
+        // scroll UP
+        if (diff < 0 && isCompact) {
+            navBar.classList.remove("compact");
+            isCompact = false;
+        }
+
+        lastScroll = current;
+    });
+
+
 
     </script>
 
