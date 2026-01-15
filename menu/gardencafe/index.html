@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hy">
 
 <head>
     <meta charset="UTF-8">
@@ -7,118 +7,51 @@
     <title>Garden Cafe</title>
 
     <style>
-        /* ———————————  ORIGINAL CSS (UNCHANGED)  ——————————— */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html,
+        body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
         body {
             font-family: "Hack", sans-serif;
-            background: linear-gradient(135deg, #1a3a2e 0%, #2d5a4a 50%, #1a3a2e 100%);
+            background: linear-gradient(135deg, #1a3a2e, #2d5a4a, #1a3a2e);
             color: #f0f4f0;
-            overflow-x: hidden;
-            position: relative;
-            scroll-behavior: smooth;
-            /* ← ADDED */
         }
 
-html, body {
-    max-width: 100%;
-    overflow-x: hidden;
-}
-
-
-        
-        .bg-leaf {
-            position: fixed;
-            opacity: 0.03;
-            pointer-events: none;
-            animation: float 20s infinite ease-in-out;
+        /* HEADER */
+        header {
+            text-align: center;
+            padding: 60px 16px 40px;
         }
-
-        .leaf1 {
-            top: 10%;
-            left: 5%;
-            width: 200px;
-            animation-delay: 0s;
-        }
-
-        .leaf2 {
-            top: 60%;
-            right: 10%;
-            width: 250px;
-            animation-delay: 5s;
-        }
-
-        .leaf3 {
-            bottom: 20%;
-            left: 15%;
-            width: 180px;
-            animation-delay: 10s;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0) rotate(0deg);
-            }
-
-            50% {
-                transform: translateY(-30px) rotate(5deg);
-            }
-        }
-
-@media (max-width: 480px) {
-    .menu-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-
-@media (max-width: 480px) {
-    .logo {
-        font-size: 2.6rem;
-        letter-spacing: 3px;
-        text-align: center;
-    }
-
-    .tagline {
-        font-size: 0.95rem;
-        letter-spacing: 2px;
-        text-align: center;
-    }
-
-    header {
-        padding: 60px 16px 40px;
-        text-align: center;
-    }
-}
-
-
-
-
-.link{
-    color: #d1cfca;
-}
 
         .logo {
-            font-size: 4.5rem;
-            font-weight: 300;
-            letter-spacing: 8px;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            letter-spacing: 6px;
             color: #fde9b6;
-            text-shadow: 0 0 40px rgba(200, 230, 201, 0.3);
         }
 
         .tagline {
-            font-size: 1.2rem;
-            color: #fde9b6;
-            letter-spacing: 4px;
-            font-style: italic;
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+            letter-spacing: 3px;
+            margin-top: 10px;
         }
 
+        .link {
+            display: inline-block;
+            margin: 10px 10px 0;
+            color: #d1cfca;
+            text-decoration: none;
+        }
+
+        /* DIVIDER */
         .divider {
             width: 100%;
             height: 1px;
@@ -126,180 +59,145 @@ html, body {
             margin: 40px 0;
         }
 
-        .menu-section {
-            padding: 60px 10%;
-            position: relative;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            color: #fde9b6;
-            text-align: center;
-            margin-bottom: 60px;
-            letter-spacing: 6px;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #81c784, transparent);
-        }
-
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 50px 80px;
-            margin-top: 40px;
-        }
-
-        .menu-item {
-            display: flex;
-            gap: 25px;
-            padding: 30px 0;
-            border-bottom: 1px solid rgba(129, 199, 132, 0.2);
-        }
-
-        .item-image {
-            width: 140px;
-            height: 140px;
-            object-fit: cover;
-            border-radius: 12px;
-            border: 2px solid rgba(129, 199, 132, 0.3);
-            cursor: zoom-in;
-            max-width: 100%;
-        }
-
-        .item-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .item-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 12px;
-        }
-
-        
-
-        .item-name {
-            font-size: 1.6rem;
-            color: #e8f5e9;
-        }
-
-        .item-price {
-            font-size: 1.4rem;
-            color: #a5d6a7;
-        }
-
-        .item-description {
-            font-size: 1rem;
-            color: #b9ddb9;
-        }
-
-        footer {
-            text-align: center;
-            padding: 80px 20px 40px;
-            color: #a5d6a7;
-        }
-
-        /* ————————— ADDED: Sticky navigation bar ————————— */
+        /* NAV */
         #sectionNav {
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 999;
-            background: rgba(26, 58, 46, 0.92);
+            left: 0;
+            width: 100%;
+            background: rgba(26, 58, 46, 0.95);
             backdrop-filter: blur(6px);
-            padding: 12px 20px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 10px;
-            border-bottom: 1px solid rgba(129, 199, 132, 0.3);
+            gap: 8px;
+            padding: 10px;
+            transform: translateY(-100%);
+            transition: 0.4s ease;
+            z-index: 1000;
+        }
+
+        #sectionNav.show {
+            transform: translateY(0);
         }
 
         #sectionNav button {
             background: transparent;
             border: 1px solid #81c784;
-            padding: 8px 18px;
-            border-radius: 20px;
             color: #c8e6c9;
-            font-size: 0.95rem;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
             cursor: pointer;
-            letter-spacing: 1px;
-            transition: 0.3s;
         }
 
-        #sectionNav button:hover {
-            background: rgba(129, 199, 132, 0.2);
+        /* MENU */
+        .menu-section {
+            padding: 60px 12px;
         }
 
-/* —— NAV COMPACT MODE —— */
-#sectionNav {
-    transition: padding 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
-}
+        .section-title {
+            text-align: center;
+            color: #fde9b6;
+            font-size: clamp(1.4rem, 4vw, 2rem);
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+        }
 
-#sectionNav.compact {
-    padding: 4px 10px;
-}
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
 
-#sectionNav.compact button {
-    padding: 4px 10px;
-    font-size: 0.75rem;
-}
+        /* ITEM */
+        .menu-item {
+            display: flex;
+            gap: 16px;
+            border-bottom: 1px solid rgba(129, 199, 132, 0.2);
+            padding-bottom: 20px;
+        }
 
+        .item-image {
+            width: 100px;
+            height: 100px;
+            flex-shrink: 0;
+            object-fit: cover;
+            border-radius: 10px;
+        }
 
+        .item-content {
+            flex: 1;
+            min-width: 0;
+        }
 
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .item-name {
+            font-size: 1rem;
+            word-break: break-word;
+        }
+
+        .item-price {
+            font-size: 1rem;
+            white-space: nowrap;
+            color: #a5d6a7;
+        }
+
+        .item-description {
+            font-size: 0.9rem;
+            opacity: 0.85;
+            margin-top: 6px;
+        }
+
+        /* DESKTOP */
+        @media(min-width:768px) {
+            .menu-grid {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            }
+
+            .item-image {
+                width: 130px;
+                height: 130px;
+            }
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            opacity: 0.7;
+        }
     </style>
 </head>
 
 <body>
 
-    <!-- Decorative SVGs -->
-    <svg class="bg-leaf leaf1" viewBox="0 0 100 100">
-        <path d="M50,10 Q70,30 60,50 Q70,70 50,90 Q30,70 40,50 Q30,30 50,10" fill="#c8e6c9" />
-    </svg>
-    <svg class="bg-leaf leaf2" viewBox="0 0 100 100">
-        <path d="M50,10 Q70,30 60,50 Q70,70 50,90 Q30,70 40,50 Q30,30 50,10" fill="#c8e6c9" />
-    </svg>
-    <svg class="bg-leaf leaf3" viewBox="0 0 100 100">
-        <path d="M50,10 Q70,30 60,50 Q70,70 50,90 Q30,70 40,50 Q30,30 50,10" fill="#c8e6c9" />
-    </svg>
-
     <header>
         <div class="logo">GARDEN CAFE</div>
         <div class="tagline">Էսթետիկ • Նուրբ • Հյուրընկալ</div>
-        <div>--------</div>
-        <p>Աշխատանքային ժամերը՝ 11։00-21։00</p>
-        <p style="margin-top:10px; opacity:0.7;">ք․ Տաշիր, Երևանյան 239 • +374 77 436 736</p>
-        <p>--------</p>
-        <a style="margin-top:10px; opacity:0.7;" href="https://www.facebook.com/share/1D239HHZQc/?mibextid=wwXIfr" class="link">Facebook</a>
-        <a style="margin-top:10px; opacity:0.7;" href="https://www.instagram.com/garden_tashir?igsh=amR2YjgwcTZkbjdt" class="link">Instagram</a>
+        <p style="margin-top:20px;">Աշխատանքային ժամերը՝ 11։00–21։00</p>
+        <p style="margin-top:10px;">ք․ Տաշիր, Երևանյան 239</p>
+        <a class="link" href="#">Facebook</a>
+        <a class="link" href="#">Instagram</a>
     </header>
 
     <div class="divider"></div>
 
-    <!-- ———————————— ADDED: Section navigation bar ———————————— -->
     <div id="sectionNav"></div>
-
-    <!-- —————— MENU —————— -->
     <div id="menuContainer"></div>
 
     <footer>
         <p>Optimist Print</p>
-        <p style="margin-top:10px; opacity:0.7;">+374 77 40 40 51</p>
+        <p>+374 77 40 40 51</p>
     </footer>
 
-
-    <script> 
+    <script>
         /* —————————————————————————————
                 MENU DATA
         ————————————————————————————— */
@@ -408,75 +306,38 @@ html, body {
                 ]
             }
         ];
-
-        /* ———————————— GENERATE NAVIGATION BUTTONS ———————————— */
         const nav = document.getElementById("sectionNav");
         nav.innerHTML = menuData.map((s, i) =>
-            `<button onclick="document.getElementById('section_${i}').scrollIntoView({behavior:'smooth'})">
-                ${s.title}
-            </button>`
+            `<button onclick="document.getElementById('sec${i}').scrollIntoView({behavior:'smooth'})">${s.title}</button>`
         ).join("");
 
-        /* ———————————— GENERATE MENU SECTIONS ———————————— */
         const container = document.getElementById("menuContainer");
-
-        menuData.forEach((section, i) => {
-            const html = `
-                <section class="menu-section" id="section_${i}">
-                    <h2 class="section-title">${section.title}</h2>
-                    <div class="menu-grid">
-                        ${section.items.map(item => `
-                            <div class="menu-item">
-                                <img src="${item.img}" class="item-image">
-                                <div class="item-content">
-                                    <div class="item-header">
-                                        <span class="item-name">${item.name}</span>
-                                        <span class="item-price">${item.price}</span>
-                                    </div>
-                                    <div class="item-description">${item.desc}</div>
-                                </div>
-                            </div>
-                        `).join("")}
-                    </div>
-                </section>
-                <div class="divider"></div>
-            `;
-            container.insertAdjacentHTML("beforeend", html);
+        menuData.forEach((s, i) => {
+            container.innerHTML += `
+ <section class="menu-section" id="sec${i}">
+ <h2 class="section-title">${s.title}</h2>
+ ${s.items.map(it => `
+ <div class="menu-item">
+ <img class="item-image" src="${it.img}">
+ <div class="item-content">
+ <div class="item-header">
+ <span class="item-name">${it.name}</span>
+ <span class="item-price">${it.price}</span>
+ </div>
+ <div class="item-description">${it.desc}</div>
+ </div>
+ </div>`).join("")}
+ </section>
+ <div class="divider"></div>`;
         });
 
-
-
-    const navBar = document.getElementById("sectionNav");
-
-    let lastScroll = window.pageYOffset;
-    let isCompact = false;
-    const DELTA = 15;      // շարժման նվազագույն շեմ
-    const START = 120;    // որից հետո միայն սկսի աշխատել
-
-    window.addEventListener("scroll", () => {
-        const current = window.pageYOffset;
-        const diff = current - lastScroll;
-
-        // աննշան շարժումները անտեսում ենք
-        if (Math.abs(diff) < DELTA) return;
-
-        // scroll DOWN
-        if (diff > 0 && current > START && !isCompact) {
-            navBar.classList.add("compact");
-            isCompact = true;
-        }
-
-        // scroll UP
-        if (diff < 0 && isCompact) {
-            navBar.classList.remove("compact");
-            isCompact = false;
-        }
-
-        lastScroll = current;
-    });
-
-
-
+        let last = 0;
+        window.addEventListener("scroll", () => {
+            const cur = window.scrollY;
+            if (cur < last) nav.classList.add("show");
+            else nav.classList.remove("show");
+            last = cur;
+        });
     </script>
 
 </body>
