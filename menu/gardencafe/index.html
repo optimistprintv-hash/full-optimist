@@ -24,6 +24,10 @@
             /* ← ADDED */
         }
 
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
 
 
         
@@ -67,11 +71,34 @@
             }
         }
 
-        header {
-            text-align: center;
-            padding: 80px 20px 60px;
-            position: relative;
-        }
+@media (max-width: 480px) {
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 2.6rem;
+        letter-spacing: 3px;
+        text-align: center;
+    }
+
+    .tagline {
+        font-size: 0.95rem;
+        letter-spacing: 2px;
+        text-align: center;
+    }
+
+    header {
+        padding: 60px 16px 40px;
+        text-align: center;
+    }
+}
+
+
+
 
 .link{
     color: #d1cfca;
@@ -345,7 +372,11 @@
             {
                 title: "Ըմպելիքներ / Drinks",
                 items: [
-                    { name: "Թան / Tan", price: "250֏", desc: "--", img: "./images/34.webp" }
+                    { name: "Բնական ջուր / Natural water", price: "250֏", desc: "--", img: "./images/65.webp" },
+                    { name: "Թան / Tan", price: "250֏", desc: "--", img: "./images/34.webp" },
+                    { name: "Հանքային ջուր 0.5լ  | ապակե 1լ / Mineral water 0.5l | glass 1l", price: "350/400֏", desc: "--", img: "./images/66.webp" },
+                    { name: "Կոկա կոլա, Ֆանտա 1լ, 0.5լ, 0.25լ/ CocaCola, Fanta 1l, 0.5l, 0.25l", price: "800/500/420֏", desc: "--", img: "./images/67.webp" },
+                    { name: "Բնական հյութ 1լ, 0.2լ/ Natural juice 1l, 0.2l", price: "950/300֏", desc: "--", img: "./images/68.webp" }
                 ]
             },
             {
@@ -373,7 +404,7 @@
                     { name: "Վաֆլի Վենսկայա / Viennese Waffles", price: "650֏", desc: "--", img: "./images/40.webp" },
                     { name: "Վաֆլի Վենսկայա պաղպաղակով / Viennese Waffles with ice cream", price: "750֏", desc: "--", img: "./images/41.webp" },
                     { name: "Վաֆլի գանգոնսկի / Hong Kong Waffles", price: "1000֏", desc: "--", img: "./images/42.webp" },
-                    { name: "Նապոլեոն / Napoleon", price: "450", desc: "--", img: "./images/43.webp" }
+                    { name: "Նապոլեոն / Napoleon", price: "450֏", desc: "--", img: "./images/43.webp" }
                 ]
             }
         ];
